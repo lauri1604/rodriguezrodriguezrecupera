@@ -18,6 +18,7 @@ class Ui_venprincipal(object):
         venPrincipal.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(parent=venPrincipal)
         self.centralwidget.setObjectName("centralwidget")
+        self.horizontalSpacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.panPrincipal = QtWidgets.QTabWidget(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -30,7 +31,7 @@ class Ui_venprincipal(object):
         font.setFamily("Myanmar Text")
         self.panPrincipal.setFont(font)
         self.panPrincipal.setObjectName("panPrincipal")
-        self.tab = QtWidgets.QWidget()
-        self.tab.setObjectName("Contactos")
-        self.gridLayout = QtWidgets.QGridLayout(self.tab)
+        self.pesContactos = QtWidgets.QWidget()
+        self.pesContactos.setObjectName("Contactos")
+        self.gridLayout = QtWidgets.QGridLayout(self.pesContactos)
         
