@@ -26,10 +26,6 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1182, 749)
-        MainWindow.setMaximumSize(QSize(16777215, 16777194))
-        icon = QIcon()
-        icon.addFile(u"img/logo.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.tabWidget = QTabWidget(self.centralwidget)
@@ -37,20 +33,20 @@ class Ui_MainWindow(object):
         self.tabWidget.setGeometry(QRect(80, 20, 1001, 681))
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
-        self.layoutWidget = QWidget(self.tab)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(21, 10, 821, 146))
-        self.gridLayout = QGridLayout(self.layoutWidget)
+        self.widget = QWidget(self.tab)
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(21, 10, 821, 146))
+        self.gridLayout = QGridLayout(self.widget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.lblfechaalta = QLabel(self.layoutWidget)
+        self.lblfechaalta = QLabel(self.widget)
         self.lblfechaalta.setObjectName(u"lblfechaalta")
         self.lblfechaalta.setMinimumSize(QSize(50, 0))
         self.lblfechaalta.setMaximumSize(QSize(60, 16777215))
 
         self.gridLayout.addWidget(self.lblfechaalta, 2, 2, 1, 1)
 
-        self.txtciudad = QTextEdit(self.layoutWidget)
+        self.txtciudad = QTextEdit(self.widget)
         self.txtciudad.setObjectName(u"txtciudad")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -62,14 +58,14 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.txtciudad, 0, 3, 1, 1)
 
-        self.lbllnotas = QLabel(self.layoutWidget)
+        self.lbllnotas = QLabel(self.widget)
         self.lbllnotas.setObjectName(u"lbllnotas")
         self.lbllnotas.setMinimumSize(QSize(50, 25))
         self.lbllnotas.setMaximumSize(QSize(60, 16777215))
 
         self.gridLayout.addWidget(self.lbllnotas, 1, 2, 1, 1)
 
-        self.txtnombre = QPlainTextEdit(self.layoutWidget)
+        self.txtnombre = QPlainTextEdit(self.widget)
         self.txtnombre.setObjectName(u"txtnombre")
         sizePolicy.setHeightForWidth(self.txtnombre.sizePolicy().hasHeightForWidth())
         self.txtnombre.setSizePolicy(sizePolicy)
@@ -78,14 +74,14 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.txtnombre, 1, 1, 1, 1)
 
-        self.lblmovil = QLabel(self.layoutWidget)
+        self.lblmovil = QLabel(self.widget)
         self.lblmovil.setObjectName(u"lblmovil")
         self.lblmovil.setMinimumSize(QSize(50, 25))
         self.lblmovil.setMaximumSize(QSize(60, 25))
 
         self.gridLayout.addWidget(self.lblmovil, 3, 0, 1, 1)
 
-        self.txtmovil = QTextEdit(self.layoutWidget)
+        self.txtmovil = QTextEdit(self.widget)
         self.txtmovil.setObjectName(u"txtmovil")
         sizePolicy.setHeightForWidth(self.txtmovil.sizePolicy().hasHeightForWidth())
         self.txtmovil.setSizePolicy(sizePolicy)
@@ -94,21 +90,21 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.txtmovil, 3, 1, 1, 1)
 
-        self.txtfechaalta = QTextEdit(self.layoutWidget)
+        self.txtfechaalta = QTextEdit(self.widget)
         self.txtfechaalta.setObjectName(u"txtfechaalta")
         self.txtfechaalta.setMinimumSize(QSize(80, 0))
         self.txtfechaalta.setMaximumSize(QSize(80, 20))
 
         self.gridLayout.addWidget(self.txtfechaalta, 2, 3, 1, 1)
 
-        self.txtnotas = QTextEdit(self.layoutWidget)
+        self.txtnotas = QTextEdit(self.widget)
         self.txtnotas.setObjectName(u"txtnotas")
         self.txtnotas.setMinimumSize(QSize(151, 25))
         self.txtnotas.setMaximumSize(QSize(200, 25))
 
         self.gridLayout.addWidget(self.txtnotas, 1, 3, 1, 1)
 
-        self.txtemail = QPlainTextEdit(self.layoutWidget)
+        self.txtemail = QPlainTextEdit(self.widget)
         self.txtemail.setObjectName(u"txtemail")
         sizePolicy.setHeightForWidth(self.txtemail.sizePolicy().hasHeightForWidth())
         self.txtemail.setSizePolicy(sizePolicy)
@@ -117,7 +113,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.txtemail, 2, 1, 1, 1)
 
-        self.txtid = QTextEdit(self.layoutWidget)
+        self.txtid = QTextEdit(self.widget)
         self.txtid.setObjectName(u"txtid")
         sizePolicy.setHeightForWidth(self.txtid.sizePolicy().hasHeightForWidth())
         self.txtid.setSizePolicy(sizePolicy)
@@ -125,53 +121,53 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.txtid, 0, 1, 1, 1)
 
-        self.lblnombre = QLabel(self.layoutWidget)
+        self.lblnombre = QLabel(self.widget)
         self.lblnombre.setObjectName(u"lblnombre")
         self.lblnombre.setMinimumSize(QSize(50, 25))
         self.lblnombre.setMaximumSize(QSize(60, 25))
 
         self.gridLayout.addWidget(self.lblnombre, 1, 0, 1, 1)
 
-        self.lblemail = QLabel(self.layoutWidget)
+        self.lblemail = QLabel(self.widget)
         self.lblemail.setObjectName(u"lblemail")
         self.lblemail.setMinimumSize(QSize(47, 20))
         self.lblemail.setMaximumSize(QSize(48, 20))
 
         self.gridLayout.addWidget(self.lblemail, 2, 0, 1, 1)
 
-        self.lblid = QLabel(self.layoutWidget)
+        self.lblid = QLabel(self.widget)
         self.lblid.setObjectName(u"lblid")
         self.lblid.setMinimumSize(QSize(50, 25))
         self.lblid.setMaximumSize(QSize(30, 20))
 
         self.gridLayout.addWidget(self.lblid, 0, 0, 1, 1)
 
-        self.lblciudad = QLabel(self.layoutWidget)
+        self.lblciudad = QLabel(self.widget)
         self.lblciudad.setObjectName(u"lblciudad")
         self.lblciudad.setMinimumSize(QSize(50, 25))
         self.lblciudad.setMaximumSize(QSize(60, 25))
 
         self.gridLayout.addWidget(self.lblciudad, 0, 2, 1, 1)
 
-        self.layoutWidget1 = QWidget(self.tab)
-        self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(20, 150, 821, 331))
-        self.gridLayout_2 = QGridLayout(self.layoutWidget1)
+        self.widget1 = QWidget(self.tab)
+        self.widget1.setObjectName(u"widget1")
+        self.widget1.setGeometry(QRect(20, 150, 821, 331))
+        self.gridLayout_2 = QGridLayout(self.widget1)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.botonalta_2 = QPushButton(self.layoutWidget1)
+        self.botonalta_2 = QPushButton(self.widget1)
         self.botonalta_2.setObjectName(u"botonalta_2")
 
         self.horizontalLayout_2.addWidget(self.botonalta_2)
 
-        self.botonmodificar_2 = QPushButton(self.layoutWidget1)
+        self.botonmodificar_2 = QPushButton(self.widget1)
         self.botonmodificar_2.setObjectName(u"botonmodificar_2")
 
         self.horizontalLayout_2.addWidget(self.botonmodificar_2)
 
-        self.botoneliminar_2 = QPushButton(self.layoutWidget1)
+        self.botoneliminar_2 = QPushButton(self.widget1)
         self.botoneliminar_2.setObjectName(u"botoneliminar_2")
 
         self.horizontalLayout_2.addWidget(self.botoneliminar_2)
@@ -195,7 +191,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addItem(self.verticalSpacer, 0, 2, 1, 1)
 
-        self.tableWidget = QTableWidget(self.layoutWidget1)
+        self.tableWidget = QTableWidget(self.widget1)
         self.tableWidget.setObjectName(u"tableWidget")
 
         self.gridLayout_2.addWidget(self.tableWidget, 3, 0, 1, 5)
@@ -207,7 +203,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1182, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1182, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
