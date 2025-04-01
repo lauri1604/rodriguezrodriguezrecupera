@@ -8,7 +8,7 @@ class Main(QtWidgets.QMainWindow):
        super(Main,self).__init__()
        var.ui = Ui_venprincipal()
        var.ui.setupUi(self)
-             
+       
        
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
