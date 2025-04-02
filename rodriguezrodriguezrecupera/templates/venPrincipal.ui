@@ -421,7 +421,43 @@
         </spacer>
        </item>
        <item row="3" column="0" colspan="5">
-        <widget class="QTableWidget" name="tableWidget"/>
+        <widget class="QTableWidget" name="tableWidget">
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nombre</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Email</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Movil</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ciudad</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Notas</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Fecha Alta</string>
+          </property>
+         </column>
+        </widget>
        </item>
       </layout>
      </widget>

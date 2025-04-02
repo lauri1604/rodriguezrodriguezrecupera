@@ -1,0 +1,9 @@
+/* ---- Estilo para QMainWindow ---- */
+QMainWindow {
+    background-color:  brown;
+}
+
+/* ---- Estilo para QTabWidget ---- */
+QTabWidget {
+    background-color: whitesmoke;
+}
