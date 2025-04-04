@@ -3,6 +3,7 @@ from PyQt6 import QtWidgets, QtGui, QtCore
 class Ui_venprincipal(object):
     def setupUi(self,venPrincipal):
         venPrincipal.setObjectName("venPrincipal")
+        venPrincipal.setWindowTitle("Agenda Telefónica")
         venPrincipal.resize(1537, 903)
         venPrincipal.setMinimumSize(110, 25)
         venPrincipal.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -20,10 +21,10 @@ class Ui_venprincipal(object):
         venPrincipal.setCentralWidget(self.centralwidget)
         
         # Layout vertical principal
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.verticalLayout.setContentsMargins(50, 20, 50, 20)
-        self.verticalLayout.setSpacing(10)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(50, 20, 50, 20)
+        self.verticalLayout_2.setSpacing(10)
 
         # Panel con pestañas
         self.panPrincipal = QtWidgets.QTabWidget(parent=self.centralwidget)
@@ -37,14 +38,14 @@ class Ui_venprincipal(object):
         self.pesContactos.setObjectName("pesContactos")
         
         # Grid Layout para la pestaña Contactos
-        self.gridLayout = QtWidgets.QGridLayout(self.pesContactos)
-        self.gridLayout.setObjectName("gridLayout")
-        self.gridLayout.setContentsMargins(25, 50, 25, 50)  # Reducir márgenes laterales
-        self.gridLayout.setHorizontalSpacing(15)
-        self.gridLayout.setVerticalSpacing(10)
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.pesContactos)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.gridLayout_2.setContentsMargins(25, 50, 25, 50)
+        self.gridLayout_2.setHorizontalSpacing(15)
+        self.gridLayout_2.setVerticalSpacing(10)
         
         # ID
-        self.lblid = QtWidgets.QLabel(parent=self.pesContactos)
+        self.lblid= QtWidgets.QLabel(parent=self.pesContactos)
         self.lblid.setObjectName("lblid")
         self.lblid.setText("ID")
         self.lblid.setMinimumSize(QtCore.QSize(20, 0))
@@ -56,6 +57,7 @@ class Ui_venprincipal(object):
         self.txtid.setMinimumSize(QtCore.QSize(50, 0))
         self.txtid.setMaximumSize(QtCore.QSize(60, 25))
         self.txtid.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtid.setStyleSheet("background-color: rgb(130, 94, 104);")
 
         # Nombre
         self.lblnombre = QtWidgets.QLabel(parent=self.pesContactos)
@@ -137,41 +139,46 @@ class Ui_venprincipal(object):
 
         # Añadir widgets al gridLayout
         # Primera fila
-        self.gridLayout.addWidget(self.lblid, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtid, 0, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.lblid, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtid, 0, 2, 1, 1)
 
         # Segunda fila
-        self.gridLayout.addWidget(self.lblnombre, 1, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtnombre, 1, 2, 1, 2)
-        self.gridLayout.addWidget(self.lblnotas, 1, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtnotas, 1, 5, 1, 2)
+        self.gridLayout_2.addWidget(self.lblnombre, 1, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtnombre, 1, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.lblnotas, 1, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtnotas, 1, 5, 1, 2)
 
         # Tercera fila
-        self.gridLayout.addWidget(self.lblemail, 2, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtemail, 2, 2, 1, 2)
-        self.gridLayout.addWidget(self.lblfechaalta, 2, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtfechaalta, 2, 5, 1, 1)
+        self.gridLayout_2.addWidget(self.lblemail, 2, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtemail, 2, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.lblfechaalta, 2, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtfechaalta, 2, 5, 1, 1)
 
         # Cuarta fila
-        self.gridLayout.addWidget(self.lblmovil, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtmovil, 3, 2, 1, 1)
-        self.gridLayout.addWidget(self.lblciudad, 3, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout.addWidget(self.txtCiudad, 3, 5, 1, 1)
+        self.gridLayout_2.addWidget(self.lblmovil, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtmovil, 3, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.lblciudad, 3, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtCiudad, 3, 5, 1, 1)
 
         # Configurar columnas para mejor alineación
-        self.gridLayout.setColumnMinimumWidth(1, 100)   # Labels izquierda
-        self.gridLayout.setColumnMinimumWidth(2, 300)   # Campos texto izquierda
-        self.gridLayout.setColumnMinimumWidth(3, 200)   # Aumentar espacio entre grupos
-        self.gridLayout.setColumnMinimumWidth(4, 100)   # Labels derecha
-        self.gridLayout.setColumnMinimumWidth(5, 300)   # Campos texto derecha
+        self.gridLayout_2.setColumnMinimumWidth(1, 100)   # Labels izquierda
+        self.gridLayout_2.setColumnMinimumWidth(2, 300)   # Campos texto izquierda
+        self.gridLayout_2.setColumnMinimumWidth(3, 200)   # Aumentar espacio entre grupos
+        self.gridLayout_2.setColumnMinimumWidth(4, 100)   # Labels derecha
+        self.gridLayout_2.setColumnMinimumWidth(5, 300)   # Campos texto derecha
 
         # Ajustar stretch para que ocupe todo el ancho disponible
-        self.gridLayout.setColumnStretch(0, 1)  # Stretch izquierda
-        self.gridLayout.setColumnStretch(6, 1) # Stretch derecha
+        self.gridLayout_2.setColumnStretch(0, 1)  # Stretch izquierda
+        self.gridLayout_2.setColumnStretch(6, 1)  # Stretch derecha
 
         # Layout horizontal para botones
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSpacing(20)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.horizontalLayout_3.setSpacing(20)
+        
+        # Crear horizontal spacers
+        self.horizontalSpacer_5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         
         # Crear botones
         self.btnAlta = QtWidgets.QPushButton(parent=self.pesContactos)
@@ -187,26 +194,106 @@ class Ui_venprincipal(object):
         self.btnEliminar.setFixedSize(100, 30)
         
         # Añadir botones al layout horizontal
-        self.horizontalLayout.addStretch(1)
-        self.horizontalLayout.addWidget(self.btnAlta)
-        self.horizontalLayout.addWidget(self.btnModificar)
-        self.horizontalLayout.addWidget(self.btnEliminar)
-        self.horizontalLayout.addStretch(1)
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
+        self.horizontalLayout_3.addWidget(self.btnAlta)
+        self.horizontalLayout_3.addWidget(self.btnModificar)
+        self.horizontalLayout_3.addWidget(self.btnEliminar)
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
         
          # Crear tabla
         self.tablaContactos = QtWidgets.QTableWidget(parent=self.pesContactos)
-        self.tablaContactos.setMinimumSize(QtCore.QSize(700, 200))  # Reducir ancho de 830 a 700
+        self.tablaContactos.setObjectName("tablaContactos")
+        self.tablaContactos.setMinimumSize(QtCore.QSize(700, 200))
         self.tablaContactos.setColumnCount(7)
+        self.tablaContactos.setRowCount(0)
         self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta"])
         
-        # Añadir layout de botones y tabla al gridLayout
-        self.gridLayout.addLayout(self.horizontalLayout, 4, 1, 1, 5)  # Reducir span de 7 a 5 columnas, empezar en 1
-        self.gridLayout.addWidget(self.tablaContactos, 5, 1, 1, 5)
+        # Configurar propiedades de la tabla
+        self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.tablaContactos.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.SingleSelection)
+        self.tablaContactos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tablaContactos.horizontalHeader().setStretchLastSection(True)
+        self.tablaContactos.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Interactive)
+        self.tablaContactos.verticalHeader().setVisible(False)
+        
+        # Ajustar ancho de columnas
+        self.tablaContactos.setColumnWidth(0, 60)    # ID (como txtid: 60)
+        self.tablaContactos.setColumnWidth(1, 250)   # Nombre (como txtnombre: 250)
+        self.tablaContactos.setColumnWidth(2, 240)   # Email (como txtemail: 240)
+        self.tablaContactos.setColumnWidth(3, 70)    # Móvil (como txtmovil: 70)
+        self.tablaContactos.setColumnWidth(4, 110)   # Ciudad (como txtCiudad: 110)
+        self.tablaContactos.setColumnWidth(5, 240)   # Notas (como txtnotas: 240)
+        self.tablaContactos.setColumnWidth(6, 70)    # Fecha Alta (como txtfechaalta: 70)
+
+        # Añadir layouts y widgets al gridLayout_2
+        self.gridLayout_2.addLayout(self.horizontalLayout_3, 4, 1, 1, 5)  # Botones
+        self.gridLayout_2.addWidget(self.tablaContactos, 5, 1, 1, 5)      # Tabla
         
         # Ajustar espaciado vertical
-        self.gridLayout.setRowMinimumHeight(4, 50)  # Aumentar espacio antes de botones
-        self.gridLayout.setRowMinimumHeight(5, 20)  # Mantener espacio antes de tabla
+        self.gridLayout_2.setRowMinimumHeight(4, 30)  # Espacio antes de botones
+        self.gridLayout_2.setRowMinimumHeight(5, 20)  # Espacio antes de tabla
               
         # Añadir pestaña y panel principal
         self.panPrincipal.addTab(self.pesContactos, "CONTACTOS")
-        self.verticalLayout.addWidget(self.panPrincipal)
+        self.verticalLayout_2.addWidget(self.panPrincipal)
+
+        # Crear barra de menú
+        self.menubar = QtWidgets.QMenuBar(venPrincipal)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1537, 21))
+        self.menubar.setObjectName("menubar")
+
+        # Crear menús principales
+        self.menuArchivo = QtWidgets.QMenu(parent=self.menubar)
+        self.menuArchivo.setObjectName("menuArchivo")
+        self.menuArchivo.setTitle("Archivo")
+
+        self.menuHerramientas = QtWidgets.QMenu(parent=self.menubar)
+        self.menuHerramientas.setObjectName("menuHerramientas")
+        self.menuHerramientas.setTitle("Herramientas")
+
+        self.menuAyuda = QtWidgets.QMenu(parent=self.menubar)
+        self.menuAyuda.setObjectName("menuAyuda")
+        self.menuAyuda.setTitle("Ayuda")
+
+        # Establecer la barra de menú
+        venPrincipal.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(parent=venPrincipal)
+        self.statusbar.setObjectName("statusbar")
+        venPrincipal.setStatusBar(self.statusbar)
+        self.toolbar = QtWidgets.QToolBar(parent=venPrincipal)
+        self.toolbar.setObjectName("toolbar")
+        venPrincipal.addToolBar(QtCore.Qt.ToolBarArea.TopToolBarArea, self.toolbar)
+
+        # Crear acciones para el menú Archivo
+        self.actionSalir = QtGui.QAction(venPrincipal)
+        self.actionSalir.setObjectName("actionSalir")
+        self.actionSalir.setText("Salir")
+        self.actionSalir.setShortcut("Ctrl+S")
+
+        # Crear acciones para el menú Herramientas
+        self.actionCrear_Backup = QtGui.QAction(venPrincipal)
+        self.actionCrear_Backup.setObjectName("actionCrear_Backup")
+        self.actionCrear_Backup.setText("Crear Backup")
+
+        self.actionRestaurar_Backup = QtGui.QAction(venPrincipal)
+        self.actionRestaurar_Backup.setObjectName("actionRestaurar_Backup")
+        self.actionRestaurar_Backup.setText("Restaurar Backup")
+
+        # Crear acciones para el menú Ayuda
+        self.actionAcercaDe = QtGui.QAction(venPrincipal)
+        self.actionAcercaDe.setObjectName("actionAcercaDe")
+        self.actionAcercaDe.setText("Acerca de")
+
+        # Añadir acciones a los menús
+        self.menuArchivo.addAction(self.actionSalir)
+        
+        # Añadir acciones a Herramientas
+        self.menuHerramientas.addAction(self.actionCrear_Backup)
+        self.menuHerramientas.addAction(self.actionRestaurar_Backup)
+        
+        self.menuAyuda.addAction(self.actionAcercaDe)
+        
+        # Añadir menús a la barra de menú
+        self.menubar.addAction(self.menuArchivo.menuAction())
+        self.menubar.addAction(self.menuHerramientas.menuAction())
+        self.menubar.addAction(self.menuAyuda.menuAction())

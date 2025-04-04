@@ -1,9 +1,58 @@
 /* ---- Estilo para QMainWindow ---- */
 QMainWindow {
-    background-color:  brown;
+    background-color: rgb(130, 120, 94);
 }
 
 /* ---- Estilo para QTabWidget ---- */
 QTabWidget {
+    background-color: whitesmoke;
+}
+QPushButton {
+    background-color: rgb(94, 104, 130);
+    color: white;
+    border-radius: 5px;
+    font-weight: solid;
+}
+QPushButton:disabled {
+    background-color: rgb(94, 104, 130);
+    color: white;
+}
+
+QLineEdit {
+    background-color: rgb(94, 130, 115);
+}
+QTableWidget{
+    background-color: whitesmoke;
+    color: black;
+    font-size: 14px;
+}
+
+QTableWidget::item:alternate {
+        background-color: white;
+}
+
+QTableWidget::item:selected {
+        background-color: #FFFFCC;
+        color: black;
+    }
+QHeaderView::section {
+    background-color: rgb(130, 120, 94); /* Color de fondo del encabezado */
+    color: black;
+    font-size: 16px;/* Color del texto */
+    font-weight: bold;         /* Negrita para el texto */
+    padding: 5px;              /* Espaciado interno */
+    border: 1px solid black;   /* Borde del encabezado */
+}
+
+QLineEdit{
+    background-color: white;
+    color:black;
+}
+QLabel {
+    background-color: #d7eff6; /* Mismo color que el fondo del QMainWindow para que se integre */
+    color: black;
+    font-size: 12px;
+}
+QGridLayout{
     background-color: whitesmoke;
 }

@@ -11,28 +11,39 @@
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderView,
-    QLabel, QMainWindow, QMenuBar, QPlainTextEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
-    QTabWidget, QTableWidget, QTableWidgetItem, QTextEdit,
-    QWidget)
+    QLabel, QMainWindow, QMenu, QMenuBar,
+    QPlainTextEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QStatusBar, QTabWidget, QTableWidget, QTableWidgetItem,
+    QTextEdit, QWidget)
 
-class Ui_venPrincipal(object):
-    def setupUi(self, venPrincipal):
-        if not venPrincipal.objectName():
-            venPrincipal.setObjectName(u"venPrincipal")
-        venPrincipal.resize(1182, 764)
-        venPrincipal.setIconSize(QSize(30, 30))
-        self.centralwidget = QWidget(venPrincipal)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1182, 749)
+        MainWindow.setMaximumSize(QSize(16777215, 16777194))
+        icon = QIcon()
+        icon.addFile(u"img/logo.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        MainWindow.setWindowIcon(icon)
+        self.actionSalir = QAction(MainWindow)
+        self.actionSalir.setObjectName(u"actionSalir")
+        self.actionCrear_Backup = QAction(MainWindow)
+        self.actionCrear_Backup.setObjectName(u"actionCrear_Backup")
+        self.actionRestaurar_Backup = QAction(MainWindow)
+        self.actionRestaurar_Backup.setObjectName(u"actionRestaurar_Backup")
+        self.actionExportar_Datos = QAction(MainWindow)
+        self.actionExportar_Datos.setObjectName(u"actionExportar_Datos")
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.panPrincipal = QTabWidget(self.centralwidget)
         self.panPrincipal.setObjectName(u"panPrincipal")
-        self.panPrincipal.setGeometry(QRect(100, 30, 981, 768))
-        self.panPrincipal.setMinimumSize(QSize(0, 768))
+        self.panPrincipal.setGeometry(QRect(80, 20, 1001, 681))
         self.pesContactos = QWidget()
         self.pesContactos.setObjectName(u"pesContactos")
         self.layoutWidget = QWidget(self.pesContactos)
@@ -120,6 +131,7 @@ class Ui_venPrincipal(object):
         sizePolicy.setHeightForWidth(self.txtid.sizePolicy().hasHeightForWidth())
         self.txtid.setSizePolicy(sizePolicy)
         self.txtid.setMaximumSize(QSize(80, 25))
+        self.txtid.setStyleSheet(u"")
 
         self.gridLayout.addWidget(self.txtid, 0, 1, 1, 1)
 
@@ -177,6 +189,10 @@ class Ui_venPrincipal(object):
 
         self.gridLayout_2.addLayout(self.horizontalLayout_2, 1, 1, 1, 3)
 
+        self.verticalSpacer = QSpacerItem(20, 28, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_2.addItem(self.verticalSpacer, 0, 2, 1, 1)
+
         self.verticalSpacer_2 = QSpacerItem(20, 28, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_2.addItem(self.verticalSpacer_2, 2, 2, 1, 1)
@@ -189,11 +205,23 @@ class Ui_venPrincipal(object):
 
         self.gridLayout_2.addItem(self.horizontalSpacer_4, 1, 4, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 28, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_2.addItem(self.verticalSpacer, 0, 2, 1, 1)
-
         self.tableWidget = QTableWidget(self.layoutWidget1)
+        if (self.tableWidget.columnCount() < 7):
+            self.tableWidget.setColumnCount(7)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
         self.tableWidget.setObjectName(u"tableWidget")
 
         self.gridLayout_2.addWidget(self.tableWidget, 3, 0, 1, 5)
@@ -202,51 +230,88 @@ class Ui_venPrincipal(object):
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.panPrincipal.addTab(self.tab_2, "")
-        venPrincipal.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(venPrincipal)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 1182, 22))
-        venPrincipal.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(venPrincipal)
+        self.menuArchivo = QMenu(self.menubar)
+        self.menuArchivo.setObjectName(u"menuArchivo")
+        self.menuGesti_n = QMenu(self.menubar)
+        self.menuGesti_n.setObjectName(u"menuGesti_n")
+        self.menuHerramientas = QMenu(self.menubar)
+        self.menuHerramientas.setObjectName(u"menuHerramientas")
+        self.menuAyuda = QMenu(self.menubar)
+        self.menuAyuda.setObjectName(u"menuAyuda")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
-        venPrincipal.setStatusBar(self.statusbar)
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(venPrincipal)
+        self.menubar.addAction(self.menuArchivo.menuAction())
+        self.menubar.addAction(self.menuGesti_n.menuAction())
+        self.menubar.addAction(self.menuHerramientas.menuAction())
+        self.menubar.addAction(self.menuAyuda.menuAction())
+        self.menuArchivo.addAction(self.actionSalir)
+        self.menuHerramientas.addAction(self.actionCrear_Backup)
+        self.menuHerramientas.addAction(self.actionRestaurar_Backup)
+        self.menuHerramientas.addSeparator()
+        self.menuHerramientas.addAction(self.actionExportar_Datos)
 
-        self.panPrincipal.setCurrentIndex(0)
+        self.retranslateUi(MainWindow)
 
-
-        QMetaObject.connectSlotsByName(venPrincipal)
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, venPrincipal):
-        venPrincipal.setWindowTitle(QCoreApplication.translate("venPrincipal", u"Agenda Telef\u00f3nica", None))
-        self.lblfechaalta.setText(QCoreApplication.translate("venPrincipal", u"Fecha alta:", None))
-        self.lbllnotas.setText(QCoreApplication.translate("venPrincipal", u"Notas:", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Agenda telef\u00f3bica", None))
+        self.actionSalir.setText(QCoreApplication.translate("MainWindow", u"Salir", None))
+        self.actionCrear_Backup.setText(QCoreApplication.translate("MainWindow", u"Crear Backup", None))
+        self.actionRestaurar_Backup.setText(QCoreApplication.translate("MainWindow", u"Restaurar Backup", None))
+        self.actionExportar_Datos.setText(QCoreApplication.translate("MainWindow", u"Exportar Datos", None))
+        self.lblfechaalta.setText(QCoreApplication.translate("MainWindow", u"Fecha alta:", None))
+        self.lbllnotas.setText(QCoreApplication.translate("MainWindow", u"Notas:", None))
 #if QT_CONFIG(tooltip)
-        self.txtnombre.setToolTip(QCoreApplication.translate("venPrincipal", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.txtnombre.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.lblmovil.setText(QCoreApplication.translate("venPrincipal", u"M\u00f3vil:", None))
+        self.lblmovil.setText(QCoreApplication.translate("MainWindow", u"M\u00f3vil:", None))
 #if QT_CONFIG(whatsthis)
-        self.txtmovil.setWhatsThis(QCoreApplication.translate("venPrincipal", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+        self.txtmovil.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
 #if QT_CONFIG(whatsthis)
-        self.txtfechaalta.setWhatsThis(QCoreApplication.translate("venPrincipal", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+        self.txtfechaalta.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
 #if QT_CONFIG(whatsthis)
-        self.txtemail.setWhatsThis(QCoreApplication.translate("venPrincipal", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.txtemail.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
 #if QT_CONFIG(whatsthis)
-        self.txtid.setWhatsThis(QCoreApplication.translate("venPrincipal", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+        self.txtid.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
-        self.lblnombre.setText(QCoreApplication.translate("venPrincipal", u"Nombre:", None))
-        self.lblemail.setText(QCoreApplication.translate("venPrincipal", u"Email:", None))
-        self.lblid.setText(QCoreApplication.translate("venPrincipal", u"id:", None))
-        self.lblciudad.setText(QCoreApplication.translate("venPrincipal", u"Ciudad:", None))
-        self.botonalta_2.setText(QCoreApplication.translate("venPrincipal", u"ALTA", None))
-        self.botonmodificar_2.setText(QCoreApplication.translate("venPrincipal", u"MODIFICAR", None))
-        self.botoneliminar_2.setText(QCoreApplication.translate("venPrincipal", u"ELIMINAR", None))
-        self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.pesContactos), QCoreApplication.translate("venPrincipal", u"Tab 1", None))
-        self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.tab_2), QCoreApplication.translate("venPrincipal", u"Tab 2", None))
+        self.lblnombre.setText(QCoreApplication.translate("MainWindow", u"Nombre:", None))
+        self.lblemail.setText(QCoreApplication.translate("MainWindow", u"Email:", None))
+        self.lblid.setText(QCoreApplication.translate("MainWindow", u"id:", None))
+        self.lblciudad.setText(QCoreApplication.translate("MainWindow", u"Ciudad:", None))
+        self.botonalta_2.setText(QCoreApplication.translate("MainWindow", u"ALTA", None))
+        self.botonmodificar_2.setText(QCoreApplication.translate("MainWindow", u"MODIFICAR", None))
+        self.botoneliminar_2.setText(QCoreApplication.translate("MainWindow", u"ELIMINAR", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Email", None));
+        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Movil", None));
+        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Ciudad", None));
+        ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Notas", None));
+        ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Fecha Alta", None));
+        self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.pesContactos), QCoreApplication.translate("MainWindow", u"Tab 1", None))
+        self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.menuArchivo.setTitle(QCoreApplication.translate("MainWindow", u"Archivo", None))
+        self.menuGesti_n.setTitle(QCoreApplication.translate("MainWindow", u"Gesti\u00f3n", None))
+        self.menuHerramientas.setTitle(QCoreApplication.translate("MainWindow", u"Herramientas", None))
+        self.menuAyuda.setTitle(QCoreApplication.translate("MainWindow", u"Ayuda", None))
     # retranslateUi
 
