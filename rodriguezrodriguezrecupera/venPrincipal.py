@@ -4,7 +4,7 @@ class Ui_venprincipal(object):
     def setupUi(self,venPrincipal):
         venPrincipal.setObjectName("venPrincipal")
         venPrincipal.setWindowTitle("Agenda Telefónica")
-        venPrincipal.resize(1537, 903)
+        venPrincipal.resize(1570, 903)
         venPrincipal.setMinimumSize(110, 25)
         venPrincipal.setMaximumSize(QtCore.QSize(16777215, 16777215))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,QtWidgets.QSizePolicy.Policy.Preferred)
@@ -43,6 +43,57 @@ class Ui_venprincipal(object):
         self.gridLayout_2.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_2.setHorizontalSpacing(15)
         self.gridLayout_2.setVerticalSpacing(10)
+        self.verticalSpacer_1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.horizontalSpacer_5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.horizontalLayout_3.setSpacing(20)
+        
+        self.btnAlta = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.btnAlta.setText("ALTA")
+        self.btnAlta.setFixedSize(105, 40)
+        
+        self.btnModificar = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.btnModificar.setText("MODIFICAR")
+        self.btnModificar.setFixedSize(115, 40)
+        
+        self.btnEliminar = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.btnEliminar.setText("ELIMINAR")
+        self.btnEliminar.setFixedSize(105, 40)
+        
+        # Añadir botones al layout horizontal
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
+        self.horizontalLayout_3.addWidget(self.btnAlta)
+        self.horizontalLayout_3.addWidget(self.btnModificar)
+        self.horizontalLayout_3.addWidget(self.btnEliminar)
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
+        
+        # Crear tabla
+        self.tablaContactos = QtWidgets.QTableWidget(parent=self.pesContactos)
+        self.tablaContactos.setObjectName("tablaContactos")
+        self.tablaContactos.setMinimumSize(QtCore.QSize(1200, 500))
+        self.tablaContactos.setColumnCount(7)
+        self.tablaContactos.setRowCount(0)
+        self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta"])
+        
+        # Configurar propiedades de la tabla
+        self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.tablaContactos.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.SingleSelection)
+        self.tablaContactos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tablaContactos.horizontalHeader().setStretchLastSection(True)
+        self.tablaContactos.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Interactive)
+        self.tablaContactos.verticalHeader().setVisible(False)
+        
+        # Ajustar ancho de columnas
+        self.tablaContactos.setColumnWidth(0, 65)    # ID
+        self.tablaContactos.setColumnWidth(1, 250)   # Nombre
+        self.tablaContactos.setColumnWidth(2, 240)   # Email
+        self.tablaContactos.setColumnWidth(3, 85)    # Móvil
+        self.tablaContactos.setColumnWidth(4, 130)   # Ciudad
+        self.tablaContactos.setColumnWidth(5, 230)   # Notas
+        self.tablaContactos.setColumnWidth(6, 90)    # Fecha Alta 
         
         # ID
         self.lblid= QtWidgets.QLabel(parent=self.pesContactos)
@@ -57,7 +108,7 @@ class Ui_venprincipal(object):
         self.txtid.setMinimumSize(QtCore.QSize(50, 0))
         self.txtid.setMaximumSize(QtCore.QSize(60, 25))
         self.txtid.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        self.txtid.setStyleSheet("background-color: rgb(130, 94, 104);")
+        self.txtid.setStyleSheet("background-color: rgb(255, 255, 220);")
 
         # Nombre
         self.lblnombre = QtWidgets.QLabel(parent=self.pesContactos)
@@ -66,12 +117,13 @@ class Ui_venprincipal(object):
         self.lblnombre.setMinimumSize(QtCore.QSize(45, 0))
         self.lblnombre.setMaximumSize(QtCore.QSize(65, 25))
         self.lblnombre.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        
+                
         self.txtnombre = QtWidgets.QLineEdit(parent=self.pesContactos)
         self.txtnombre.setObjectName("txtnombre")
         self.txtnombre.setMinimumSize(QtCore.QSize(200, 0))
         self.txtnombre.setMaximumSize(QtCore.QSize(250, 25))
         self.txtnombre.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtnombre.setStyleSheet("background-color: rgb(255, 255, 239);")
 
         # Notas
         self.lblnotas = QtWidgets.QLabel(parent=self.pesContactos)
@@ -107,9 +159,10 @@ class Ui_venprincipal(object):
         self.lblfechaalta.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.txtfechaalta = QtWidgets.QLineEdit(parent=self.pesContactos)
         self.txtfechaalta.setObjectName("txtfechaalta")
-        self.txtfechaalta.setMinimumSize(QtCore.QSize(50, 0))
-        self.txtfechaalta.setMaximumSize(QtCore.QSize(70, 25))
+        self.txtfechaalta.setMinimumSize(QtCore.QSize(80, 0))
+        self.txtfechaalta.setMaximumSize(QtCore.QSize(90, 25))
         self.txtfechaalta.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtfechaalta.setStyleSheet("background-color: rgb(255, 255, 239);")
 
         # Móvil
         self.lblmovil = QtWidgets.QLabel(parent=self.pesContactos)
@@ -120,9 +173,10 @@ class Ui_venprincipal(object):
         self.lblmovil.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.txtmovil = QtWidgets.QLineEdit(parent=self.pesContactos)
         self.txtmovil.setObjectName("txtmovil")
-        self.txtmovil.setMinimumSize(QtCore.QSize(60, 0))
-        self.txtmovil.setMaximumSize(QtCore.QSize(70, 25))
+        self.txtmovil.setMinimumSize(QtCore.QSize(85, 0))
+        self.txtmovil.setMaximumSize(QtCore.QSize(100, 25))
         self.txtmovil.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtmovil.setStyleSheet("background-color: rgb(255, 255, 239);")
 
         # Ciudad
         self.lblciudad = QtWidgets.QLabel(parent=self.pesContactos)
@@ -136,30 +190,38 @@ class Ui_venprincipal(object):
         self.txtCiudad.setMinimumSize(QtCore.QSize(80, 0))
         self.txtCiudad.setMaximumSize(QtCore.QSize(110, 25))
         self.txtCiudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtCiudad.setStyleSheet("background-color: rgb(255, 255, 239);")
 
         # Añadir widgets al gridLayout
-        # Primera fila
-        self.gridLayout_2.addWidget(self.lblid, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtid, 0, 2, 1, 1)
+        self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
+        
+        # Primera fila (ID)
+        self.gridLayout_2.addWidget(self.lblid, 1, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtid, 1, 2, 1, 1)
+        
+        # Segunda fila (Nombre y Ciudad)
+        self.gridLayout_2.addWidget(self.lblnombre, 2, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtnombre, 2, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.lblciudad, 2, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtCiudad, 2, 5, 1, 1)
+        
+        # Tercera fila (Email y Notas)
+        self.gridLayout_2.addWidget(self.lblemail, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtemail, 3, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.lblnotas, 3, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtnotas, 3, 5, 1, 2)
+        
+        # Cuarta fila (Móvil y Fecha Alta)
+        self.gridLayout_2.addWidget(self.lblmovil, 4, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtmovil, 4, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.lblfechaalta, 4, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.gridLayout_2.addWidget(self.txtfechaalta, 4, 5, 1, 1)
 
-        # Segunda fila
-        self.gridLayout_2.addWidget(self.lblnombre, 1, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtnombre, 1, 2, 1, 2)
-        self.gridLayout_2.addWidget(self.lblnotas, 1, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtnotas, 1, 5, 1, 2)
-
-        # Tercera fila
-        self.gridLayout_2.addWidget(self.lblemail, 2, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtemail, 2, 2, 1, 2)
-        self.gridLayout_2.addWidget(self.lblfechaalta, 2, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtfechaalta, 2, 5, 1, 1)
-
-        # Cuarta fila
-        self.gridLayout_2.addWidget(self.lblmovil, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtmovil, 3, 2, 1, 1)
-        self.gridLayout_2.addWidget(self.lblciudad, 3, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtCiudad, 3, 5, 1, 1)
-
+        # Botones y tabla
+        self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
+        self.gridLayout_2.addWidget(self.tablaContactos, 6, 1, 1, 5)      # Tabla
+        self.gridLayout_2.addItem(self.verticalSpacer_2, 7, 0, 1, 7)      # Spacer inferior
+        
         # Configurar columnas para mejor alineación
         self.gridLayout_2.setColumnMinimumWidth(1, 100)   # Labels izquierda
         self.gridLayout_2.setColumnMinimumWidth(2, 300)   # Campos texto izquierda
@@ -170,64 +232,6 @@ class Ui_venprincipal(object):
         # Ajustar stretch para que ocupe todo el ancho disponible
         self.gridLayout_2.setColumnStretch(0, 1)  # Stretch izquierda
         self.gridLayout_2.setColumnStretch(6, 1)  # Stretch derecha
-
-        # Layout horizontal para botones
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.horizontalLayout_3.setSpacing(20)
-        
-        # Crear horizontal spacers
-        self.horizontalSpacer_5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalSpacer_6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        
-        # Crear botones
-        self.btnAlta = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnAlta.setText("ALTA")
-        self.btnAlta.setFixedSize(100, 30)
-        
-        self.btnModificar = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnModificar.setText("MODIFICAR")
-        self.btnModificar.setFixedSize(100, 30)
-        
-        self.btnEliminar = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnEliminar.setText("ELIMINAR")
-        self.btnEliminar.setFixedSize(100, 30)
-        
-        # Añadir botones al layout horizontal
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
-        self.horizontalLayout_3.addWidget(self.btnAlta)
-        self.horizontalLayout_3.addWidget(self.btnModificar)
-        self.horizontalLayout_3.addWidget(self.btnEliminar)
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
-        
-         # Crear tabla
-        self.tablaContactos = QtWidgets.QTableWidget(parent=self.pesContactos)
-        self.tablaContactos.setObjectName("tablaContactos")
-        self.tablaContactos.setMinimumSize(QtCore.QSize(700, 200))
-        self.tablaContactos.setColumnCount(7)
-        self.tablaContactos.setRowCount(0)
-        self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta"])
-        
-        # Configurar propiedades de la tabla
-        self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.tablaContactos.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.SingleSelection)
-        self.tablaContactos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
-        self.tablaContactos.horizontalHeader().setStretchLastSection(True)
-        self.tablaContactos.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Interactive)
-        self.tablaContactos.verticalHeader().setVisible(False)
-        
-        # Ajustar ancho de columnas
-        self.tablaContactos.setColumnWidth(0, 60)    # ID (como txtid: 60)
-        self.tablaContactos.setColumnWidth(1, 250)   # Nombre (como txtnombre: 250)
-        self.tablaContactos.setColumnWidth(2, 240)   # Email (como txtemail: 240)
-        self.tablaContactos.setColumnWidth(3, 70)    # Móvil (como txtmovil: 70)
-        self.tablaContactos.setColumnWidth(4, 110)   # Ciudad (como txtCiudad: 110)
-        self.tablaContactos.setColumnWidth(5, 240)   # Notas (como txtnotas: 240)
-        self.tablaContactos.setColumnWidth(6, 70)    # Fecha Alta (como txtfechaalta: 70)
-
-        # Añadir layouts y widgets al gridLayout_2
-        self.gridLayout_2.addLayout(self.horizontalLayout_3, 4, 1, 1, 5)  # Botones
-        self.gridLayout_2.addWidget(self.tablaContactos, 5, 1, 1, 5)      # Tabla
         
         # Ajustar espaciado vertical
         self.gridLayout_2.setRowMinimumHeight(4, 30)  # Espacio antes de botones
@@ -268,7 +272,6 @@ class Ui_venprincipal(object):
         self.actionSalir = QtGui.QAction(venPrincipal)
         self.actionSalir.setObjectName("actionSalir")
         self.actionSalir.setText("Salir")
-        self.actionSalir.setShortcut("Ctrl+S")
 
         # Crear acciones para el menú Herramientas
         self.actionCrear_Backup = QtGui.QAction(venPrincipal)

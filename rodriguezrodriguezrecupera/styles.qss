@@ -1,20 +1,58 @@
 /* ---- Estilo para QMainWindow ---- */
 QMainWindow {
-    background-color: rgb(130, 120, 94);
+    background-color: rgb(175, 238, 238);
+}
+
+/* ---- Estilo para QMenuBar ---- */
+QMenuBar {
+    background-color: whitesmoke;
+    color: black;
+}
+
+QMenuBar::item {
+    background-color: whitesmoke;
+    color: black;
 }
 
 /* ---- Estilo para QTabWidget ---- */
 QTabWidget {
     background-color: whitesmoke;
 }
+
+QTabWidget::pane {
+    background-color: whitesmoke
+    border 1px solid;
+}
+
+QTabBar::tab {
+    background-color: whitesmoke;
+    color: black;
+    padding: 8px 12px;
+    margin: 2px;
+    border: 1px solid #c0c0c0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+QTabBar::tab:selected {
+    background-color: rgb(0, 139, 139);
+    color: white;
+    border-bottom-color: rgb(0, 139, 139);
+}
+
 QPushButton {
-    background-color: rgb(94, 104, 130);
+    background-color: rgb(0, 139, 139);
     color: white;
     border-radius: 5px;
-    font-weight: solid;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px;
+    
 }
 QPushButton:disabled {
-    background-color: rgb(94, 104, 130);
+    background-color: rgb(0, 139, 139);
     color: white;
 }
 
@@ -36,7 +74,7 @@ QTableWidget::item:selected {
         color: black;
     }
 QHeaderView::section {
-    background-color: rgb(130, 120, 94); /* Color de fondo del encabezado */
+    background-color: rgb(175, 238, 238); /* Color de fondo del encabezado */
     color: black;
     font-size: 16px;/* Color del texto */
     font-weight: bold;         /* Negrita para el texto */
@@ -49,7 +87,7 @@ QLineEdit{
     color:black;
 }
 QLabel {
-    background-color: #d7eff6; /* Mismo color que el fondo del QMainWindow para que se integre */
+    background-color: rgb(175, 238, 238); /* Mismo color que el fondo del QMainWindow para que se integre */
     color: black;
     font-size: 12px;
 }
