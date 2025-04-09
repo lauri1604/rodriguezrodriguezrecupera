@@ -53,15 +53,15 @@ class Ui_venprincipal(object):
         
         self.btnAlta = QtWidgets.QPushButton(parent=self.pesContactos)
         self.btnAlta.setText("ALTA")
-        self.btnAlta.setFixedSize(105, 40)
+        self.btnAlta.setFixedSize(105, 45)
         
         self.btnModificar = QtWidgets.QPushButton(parent=self.pesContactos)
         self.btnModificar.setText("MODIFICAR")
-        self.btnModificar.setFixedSize(115, 40)
+        self.btnModificar.setFixedSize(115, 45)
         
         self.btnEliminar = QtWidgets.QPushButton(parent=self.pesContactos)
         self.btnEliminar.setText("ELIMINAR")
-        self.btnEliminar.setFixedSize(105, 40)
+        self.btnEliminar.setFixedSize(105, 45)
         
         # Añadir botones al layout horizontal
         self.horizontalLayout_3.addItem(self.horizontalSpacer_5)

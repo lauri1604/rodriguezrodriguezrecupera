@@ -48,7 +48,8 @@ QPushButton {
     border-radius: 5px;
     font-weight: bold;
     font-size: 16px;
-    padding: 5px;
+    padding-top: 7px;
+    padding-bottom: 5px;
     text-align: center;
 }
 QPushButton:disabled {
@@ -81,7 +82,6 @@ QHeaderView::section {
     padding: 5px;              /* Espaciado interno */
     border: 1px solid black;   /* Borde del encabezado */
     text-align: center;        /* Alineación del texto */
-    margin: 0.5px;             /* Espaciado externo */
 }
 
 QLineEdit{
@@ -92,6 +92,11 @@ QLabel {
     background-color: rgb(175, 238, 238); /* Mismo color que el fondo del QMainWindow para que se integre */
     color: black;
     font-size: 12px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 QGridLayout{
     background-color: whitesmoke;
