@@ -250,6 +250,10 @@ class Ui_venprincipal(object):
         self.menuArchivo = QtWidgets.QMenu(parent=self.menubar)
         self.menuArchivo.setObjectName("menuArchivo")
         self.menuArchivo.setTitle("Archivo")
+        
+        self.menuGestion = QtWidgets.QMenu(parent=self.menubar)
+        self.menuGestion.setObjectName("menuGestion")
+        self.menuGestion.setTitle("Gestión")
 
         self.menuHerramientas = QtWidgets.QMenu(parent=self.menubar)
         self.menuHerramientas.setObjectName("menuHerramientas")
@@ -298,5 +302,6 @@ class Ui_venprincipal(object):
         
         # Añadir menús a la barra de menú
         self.menubar.addAction(self.menuArchivo.menuAction())
+        self.menubar.addAction(self.menuGestion.menuAction())
         self.menubar.addAction(self.menuHerramientas.menuAction())
         self.menubar.addAction(self.menuAyuda.menuAction())

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>dlgAbout</class>
+ <widget class="QDialog" name="dlgAbout">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
-    <height>346</height>
+    <width>394</width>
+    <height>302</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
     <pixmap>../img/logo.ico</pixmap>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="autor">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -49,6 +49,32 @@
    </property>
    <property name="text">
     <string>Autor: Laura Mª Rodríguez Rodríguez</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="copyright">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>230</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Copyright 2025</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="botonCerrarAbout">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>250</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
    </property>
   </widget>
  </widget>
