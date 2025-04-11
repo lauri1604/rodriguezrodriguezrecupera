@@ -30,7 +30,7 @@ class Eventos(QtWidgets.QMainWindow):
             mbox.hide()
 
     def abrirAbout(self):
-        var.dlgabout.show()
+        var.dlgAbout.show()
 
     def cerrarAbout(self):
-        var.dlgabout.hide()
+        var.dlgAbout.hide()

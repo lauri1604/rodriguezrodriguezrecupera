@@ -1,5 +1,6 @@
 from PyQt6.QtCore import Qt
 from dlgAbout import *
+import eventos
 
 class FileDialogAbrir(QtWidgets.QFileDialog):
     def __init__(self):
