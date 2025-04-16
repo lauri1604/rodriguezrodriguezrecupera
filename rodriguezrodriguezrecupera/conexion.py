@@ -7,7 +7,7 @@ import sqlite3
 
 class Conexion:
     @staticmethod
-    def db_conexion(self=None):
+    def db_conexion(self = None):
         if not os.path.isfile('bbdd.db'):
             QtWidgets.QMessageBox.critical(None, 'Error', 'El archivo de la base de datos no existe.',
                                         QtWidgets.QMessageBox.StandardButton.Cancel)
@@ -33,7 +33,7 @@ class Conexion:
                                         QtWidgets.QMessageBox.StandardButton.Cancel)
             return False
     
-    def altaContactos(nuevoContacto):
+    def altaContacto(nuevoContacto):
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into CONTACTOS (id, nombre, email, movil, ciudad, notas, fecha_alta) VALUES (:id, :nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")

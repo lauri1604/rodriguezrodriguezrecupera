@@ -349,21 +349,21 @@
        <item row="1" column="1" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QPushButton" name="botonalta_2">
+          <widget class="QPushButton" name="botonalta">
            <property name="text">
             <string>ALTA</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="botonmodificar_2">
+          <widget class="QPushButton" name="botonmodificar">
            <property name="text">
             <string>MODIFICAR</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="botoneliminar_2">
+          <widget class="QPushButton" name="botoneliminar">
            <property name="text">
             <string>ELIMINAR</string>
            </property>

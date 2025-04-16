@@ -171,20 +171,20 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.botonalta_2 = QPushButton(self.layoutWidget1)
-        self.botonalta_2.setObjectName(u"botonalta_2")
+        self.botonalta = QPushButton(self.layoutWidget1)
+        self.botonalta.setObjectName(u"botonalta")
 
-        self.horizontalLayout_2.addWidget(self.botonalta_2)
+        self.horizontalLayout_2.addWidget(self.botonalta)
 
-        self.botonmodificar_2 = QPushButton(self.layoutWidget1)
-        self.botonmodificar_2.setObjectName(u"botonmodificar_2")
+        self.botonmodificar = QPushButton(self.layoutWidget1)
+        self.botonmodificar.setObjectName(u"botonmodificar")
 
-        self.horizontalLayout_2.addWidget(self.botonmodificar_2)
+        self.horizontalLayout_2.addWidget(self.botonmodificar)
 
-        self.botoneliminar_2 = QPushButton(self.layoutWidget1)
-        self.botoneliminar_2.setObjectName(u"botoneliminar_2")
+        self.botoneliminar = QPushButton(self.layoutWidget1)
+        self.botoneliminar.setObjectName(u"botoneliminar")
 
-        self.horizontalLayout_2.addWidget(self.botoneliminar_2)
+        self.horizontalLayout_2.addWidget(self.botoneliminar)
 
 
         self.gridLayout_2.addLayout(self.horizontalLayout_2, 1, 1, 1, 3)
@@ -290,9 +290,9 @@ class Ui_MainWindow(object):
         self.lblemail.setText(QCoreApplication.translate("MainWindow", u"Email:", None))
         self.lblid.setText(QCoreApplication.translate("MainWindow", u"id:", None))
         self.lblciudad.setText(QCoreApplication.translate("MainWindow", u"Ciudad:", None))
-        self.botonalta_2.setText(QCoreApplication.translate("MainWindow", u"ALTA", None))
-        self.botonmodificar_2.setText(QCoreApplication.translate("MainWindow", u"MODIFICAR", None))
-        self.botoneliminar_2.setText(QCoreApplication.translate("MainWindow", u"ELIMINAR", None))
+        self.botonalta.setText(QCoreApplication.translate("MainWindow", u"ALTA", None))
+        self.botonmodificar.setText(QCoreApplication.translate("MainWindow", u"MODIFICAR", None))
+        self.botoneliminar.setText(QCoreApplication.translate("MainWindow", u"ELIMINAR", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

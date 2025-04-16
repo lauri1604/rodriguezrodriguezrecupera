@@ -35,6 +35,25 @@ class Eventos(QtWidgets.QMainWindow):
             sys.exit()
         else:
             mbox.hide()
+            
+    def cerrarVentana(self = None):
+        try:
+            mbox = QtWidgets.QMessageBox()
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
+            mbox.setWindowIcon(QtGui.QIcon('./img/logo.ico'))
+            mbox.setWindowTitle('Salir')
+            mbox.setText('¿Desea Salir?')
+            mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
+            mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.No)
+            mbox.button(QtWidgets.QMessageBox.StandardButton.Yes).setText('Si')
+            mbox.button(QtWidgets.QMessageBox.StandardButton.No).setText('No')
+            mbox.resize(600, 800) #no funciona si no usa QDialgo QmessageBox lo tienen bloqueado
+            if mbox.exec() == QtWidgets.QMessageBox.StandardButton.Yes:
+                sys.exit()
+            else:
+                mbox.hide()
+        except Exception as error:
+             print("Error al cerrar ventana:", error)
 
     def abrirAbout(self):
         var.dlgAbout.show()
@@ -96,3 +115,18 @@ class Eventos(QtWidgets.QMainWindow):
             pass 
         except Exception as error:
             print("error en limpiar panel: ", error)
+    
+    def validarMail(mail):
+        mail = mail.lower()
+        regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
+        if re.match(regex, mail) or mail =="":
+            return True
+        else:
+            return False
+        
+    def validarMovil(movil):
+        regex =  r"^[67]\d{8}$"
+        if re.match(regex, movil):
+            return True
+        else:
+            return False

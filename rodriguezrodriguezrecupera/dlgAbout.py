@@ -16,7 +16,7 @@ class Ui_dlgAbout(object):
         self.autor.setGeometry(QtCore.QRect(70, 190, 221, 20))
         font = QtGui.QFont()
         font.setBold(True)
-        font.setWeight(75)
+        # font.setWeight(75)
         self.autor.setFont(font)
         self.autor.setOpenExternalLinks(True)
         self.autor.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextBrowserInteraction)

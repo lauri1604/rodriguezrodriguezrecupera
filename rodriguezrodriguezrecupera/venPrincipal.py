@@ -51,23 +51,23 @@ class Ui_venprincipal(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.horizontalLayout_3.setSpacing(20)
         
-        self.btnAlta = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnAlta.setText("ALTA")
-        self.btnAlta.setFixedSize(105, 45)
+        self.botonalta = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.botonalta.setText("ALTA")
+        self.botonalta.setFixedSize(105, 45)
         
-        self.btnModificar = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnModificar.setText("MODIFICAR")
-        self.btnModificar.setFixedSize(115, 45)
+        self.botonmodificar = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.botonmodificar.setText("MODIFICAR")
+        self.botonmodificar.setFixedSize(115, 45)
         
-        self.btnEliminar = QtWidgets.QPushButton(parent=self.pesContactos)
-        self.btnEliminar.setText("ELIMINAR")
-        self.btnEliminar.setFixedSize(105, 45)
+        self.botoneliminar = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.botoneliminar.setText("ELIMINAR")
+        self.botoneliminar.setFixedSize(105, 45)
         
         # Añadir botones al layout horizontal
         self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
-        self.horizontalLayout_3.addWidget(self.btnAlta)
-        self.horizontalLayout_3.addWidget(self.btnModificar)
-        self.horizontalLayout_3.addWidget(self.btnEliminar)
+        self.horizontalLayout_3.addWidget(self.botonalta)
+        self.horizontalLayout_3.addWidget(self.botonmodificar)
+        self.horizontalLayout_3.addWidget(self.botoneliminar)
         self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
         
         # Crear tabla
@@ -312,8 +312,8 @@ class Ui_venprincipal(object):
         venPrincipal.setTabOrder(self.txtid, self.txtnombre)
         venPrincipal.setTabOrder(self.txtnotas, self.txtfechaalta)
         venPrincipal.setTabOrder(self.txtmovil, self.txtCiudad)
-        venPrincipal.setTabOrder(self.btnAlta, self.btnModificar)
-        venPrincipal.setTabOrder(self.btnEliminar, self.tablaContactos)
+        venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
+        venPrincipal.setTabOrder(self.botoneliminar, self.tablaContactos)
         
     def retranslateUi(self, venPrincipal):
             _translate = QtCore.QCoreApplication.translate
@@ -327,9 +327,9 @@ class Ui_venprincipal(object):
             # self.actionRestaurar_Backup.setText(_translate("venPrincipal", "Restaurar Backup"))
             self.menuAyuda.setTitle(_translate("venPrincipal", "Ayuda"))
             self.actionAcercaDe.setText(_translate("venPrincipal", "Acerca de"))
-            self.btnAlta.setText(_translate("venPrincipal", "ALTA"))
-            self.btnModificar.setText(_translate("venPrincipal", "MODIFICAR"))
-            self.btnEliminar.setText(_translate("venPrincipal", "ELIMINAR"))
+            self.botonalta.setText(_translate("venPrincipal", "ALTA"))
+            self.botonmodificar.setText(_translate("venPrincipal", "MODIFICAR"))
+            self.botoneliminar.setText(_translate("venPrincipal", "ELIMINAR"))
             item = self.tablaContactos.horizontalHeaderItem(0)
             item.setText(_translate("venPrincipal", "ID"))
             item = self.tablaContactos.horizontalHeaderItem(1)
