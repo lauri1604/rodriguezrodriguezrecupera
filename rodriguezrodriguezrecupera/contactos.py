@@ -16,7 +16,7 @@ class Contactos:
                 var.ui.txtemail.setText(mail.lower())
            else:
                 var.ui.txtemail.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
-                var.ui.txtemail.setText(None)
+                
                 var.ui.txtemail.setPlaceholderText("correo no válido")
                 var.ui.txtemail.setFocus()
         except Exception as error:
@@ -28,7 +28,7 @@ class Contactos:
                 var.ui.txtmovil.setStyleSheet('background-color: rgb(255, 255, 239);')
            else:
                 var.ui.txtmovil.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
-                var.ui.txtmovil.setText(None)
+                
                 var.ui.txtmovil.setPlaceholderText("móvil no válido")
                 var.ui.txtmovil.setFocus()
         except Exception as error:
