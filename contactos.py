@@ -77,6 +77,44 @@ class Contactos:
     @staticmethod
     def cargaTablaContactos(self):
         try:
-            pass
+            listadocontactos = conexion.Conexion.listadoContactos(self)
+            var.longcontactos = len(listadocontactos)
+            index = 0
+            for registro in listadocontactos:
+                var.ui.tablaContactos.setRowCount(index + 1)
+                var.ui.tablaContactos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                var.ui.tablaContactos.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tablaContactos.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
+                var.ui.tablaContactos.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
+                var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))
+                var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))
+                # Configurar alineación del texto
+                var.ui.tablaContactos.item(index,0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)                
+            index += 1
+        except Exception as e:
+            print("error carga tabla contactos", e)
+            
+    def cargaOneContacto(self):
+        try:
+             # Obtener el contacto seleccionado de la tabla
+            fila = var.ui.tablaContactos.selectedItems()
+            datos = [dato.text() for dato in fila]
+            # Obtener datos completos desde la base de datos usando la función que ya tienes
+            registro = conexion.Conexion.datosOneContacto(str(datos[0]))
+            # Asegurarse que no hay valores None
+            registro = [x if x != 'None' else '' for x in registro]            
+            # Lista de campos UI en el mismo orden que vienen de la base de datos
+            listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, 
+                    var.ui.txtfechaalta]            
+            # Recorrer listado y asignar valores
+            for i in range(len(listado)):
+                listado[i].setText(registro[i])
         except Exception as error:
-            print("error carga tabla contactos", error)
+            print("error cargaOneContacto", error)
