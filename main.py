@@ -20,6 +20,18 @@ class Main(QtWidgets.QMainWindow):
         var.dlgAbrir = FileDialogAbrir()
         var.dlgAbout = dlgAbout()
 
+        '''
+        eventos del menubar y toolbar
+        '''
+        var.ui.actionSalir.triggered.connect(eventos.Eventos.mensajeSalir)
+        var.ui.actionAcercaDe.triggered.connect(eventos.Eventos.abrirAbout)
+
+        '''
+        eventos de cajas de texto
+        '''
+        var.ui.txtemail.textChanged.connect(lambda: contactos.Contactos.checkEmail(var.ui.txtemail.text()))
+        var.ui.txtmovil.textChanged.connect(lambda: contactos.Contactos.checkMovil(var.ui.txtmovil.text()))
+
     def closeEvent(self, event):
         mbox = QtWidgets.QMessageBox()
         mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
@@ -35,20 +47,9 @@ class Main(QtWidgets.QMainWindow):
         else:
             event.ignore()
 
-        '''
-        eventos del menubar y toolbar
-        '''
-        var.ui.actionSalir.triggered.connect(eventos.Eventos.mensajeSalir)
-        var.ui.actionAcercaDe.triggered.connect(eventos.Eventos.abrirAbout)
 
-        '''
-        eventos de cajas de texto
-        '''
-        var.ui.txtemail.textChanged.connect(lambda: contactos.Contactos.checkEmail(var.ui.txtemail.text()))
-        var.ui.txtmovil.textChanged.connect(lambda: contactos.Contactos.checkMovil(var.ui.txtmovil.text()))
-
-    if __name__ == '__main__':
-        app = QtWidgets.QApplication([])
-        window = Main()
-        window.showMaximized()
-        sys.exit(app.exec())
+if __name__ == '__main__':
+    app = QtWidgets.QApplication([])
+    window = Main()
+    window.showMaximized()
+    sys.exit(app.exec())

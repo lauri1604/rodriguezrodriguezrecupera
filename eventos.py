@@ -13,13 +13,11 @@ import zipfile
 import shutil
 import conexion
 import contactos
-
-
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos(QtWidgets.QMainWindow):
-    staticmethod
+    @staticmethod
     def mensajeSalir(self=None):
         mbox = QtWidgets.QMessageBox()
         mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
