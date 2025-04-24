@@ -31,6 +31,18 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.txtemail.textChanged.connect(lambda: contactos.Contactos.checkEmail(var.ui.txtemail.text()))
         var.ui.txtmovil.textChanged.connect(lambda: contactos.Contactos.checkMovil(var.ui.txtmovil.text()))
+        
+        '''
+        eventos de botones
+        '''
+        var.ui.botonalta.clicked.connect(contactos.Contactos.altaContacto)
+        
+        '''
+        eventos de tablas
+        '''
+        eventos.Eventos.resizeTablaContactos(self)
+        
+        var.ui.tablaContactos.clicked.connect(contactos.Contactos.cargaOneContacto)
 
     def closeEvent(self, event):
         mbox = QtWidgets.QMessageBox()
