@@ -36,8 +36,7 @@ class Conexion:
     def altaContacto(nuevoContacto):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT into CONTACTOS (id, nombre, email, movil, ciudad, notas, fecha_alta) VALUES (:id, :nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
-            query.bindValue(":id", nuevoContacto[0])
+            query.prepare("INSERT INTO contactos (nombre, email, movil, ciudad, notas, fecha_alta) VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
             query.bindValue(":nombre", nuevoContacto[1])
             query.bindValue(":email", nuevoContacto[2])
             query.bindValue(":movil", nuevoContacto[3])
@@ -56,22 +55,16 @@ class Conexion:
     def listadoContactos(self):
         try:
             listado = []
+            query = QtSql.QSqlQuery()
             if var.historico == 1:
-                query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
-                if query.exec():
-                    while query.next():
-                        fila = [query.value(i) for i in range(query.record().count())]
-                        listado.append(fila)
-                        return listado
-                elif var.historico == 0:
-                    query = QtSql.QSqlQuery()
-                    query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
-                    if query.exec():
-                        while query.next():
-                            fila = [query.value(i) for i in range(query.record().count())]
-                            listado.append(fila)
-                            return listado
+            elif var.historico == 0:
+                query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+                return listado
         except Exception as e:
             print("Error listado en conexion", e)
             
@@ -105,25 +98,18 @@ class Conexion:
             query = QtSql.QSqlQuery()
             query.prepare("SELECT count(*) FROM CONTACTOS WHERE id = :id")
             query.bindValue(":id", str(registro[0]))
-            if query.exec():
-                if query.next() and query.value(0)>0:
-                    if query.exec():
-                        query = QtSql.QSqlQuery()
-                        query.prepare("UPDATE CONTACTOS SET fecha_alta = :fecha_alta :nombre, email = :email, movil = :movil, ciudad = :ciudad, notas = :notas WHERE id = :id")
-                        query.bindValue(":id", registro[0])
-                        query.bindValue(":nombre", registro[1])
-                        query.bindValue(":email", registro[2])
-                        query.bindValue(":movil", registro[3])
-                        query.bindValue(":ciudad", registro[4])
-                        query.bindValue(":notas", registro[5])
-                        if query.exec():
-                            return True
-                        else:
-                            return False
-                else:
-                    return False
-            else:
-                return False
+            if query.exec() and query.next() and query.value(0) > 0:
+                query.prepare(""" UPDATE CONTACTOS SET fecha_alta = :fecha_alta,  nombre = :nombre, email = :email, movil = :movil, ciudad = :ciudad, notas = :notas WHERE id = :id""")
+                query.bindValue(":id", registro[0])
+                query.bindValue(":nombre", registro[1])
+                query.bindValue(":email", registro[2])
+                query.bindValue(":movil", registro[3])
+                query.bindValue(":ciudad", registro[4])
+                query.bindValue(":notas", registro[5])
+                query.bindValue(":fecha_alta", registro[6])
+                if query.exec():
+                    return True
+            return False
         except Exception as e:
             print("Error al modificar el contacto: ", e)
             

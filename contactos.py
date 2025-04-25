@@ -34,13 +34,8 @@ class Contactos:
     def altaContacto(self):
         try:
             op = 0
-            nuevoContacto = [
-                var.ui.txtnombre.text().title(), var.ui.txtemail.text(),
-                var.ui.txtmovil.text(), var.ui.txtciudad.text(),
-                var.ui.txtnotas.toPlainText()]
-            if (nuevoContacto[0] != "" and nuevoContacto[1] != "" 
-                and nuevoContacto[2] != "" and nuevoContacto[3] != "" 
-                and nuevoContacto[4] != ""):
+            nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.toPlainText()]
+            if (nuevoContacto[0] != "" and nuevoContacto[1] != "" and nuevoContacto[2] != "" and nuevoContacto[3] != "" and nuevoContacto[4] != ""):
                 op = 1
                 if conexion.Conexion.altaContacto and op == 1:
                     mbox = QtWidgets.QMessageBox()
@@ -77,27 +72,33 @@ class Contactos:
     @staticmethod
     def cargaTablaContactos(self):
         try:
-            listadocontactos = conexion.Conexion.listadoContactos(self)
-            var.longcontactos = len(listadocontactos)
-            index = 0
-            for registro in listadocontactos:
-                var.ui.tablaContactos.setRowCount(index + 1)
-                var.ui.tablaContactos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
-                var.ui.tablaContactos.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
-                var.ui.tablaContactos.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
-                var.ui.tablaContactos.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
-                var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
-                var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))
-                var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))
-                # Configurar alineación del texto
-                var.ui.tablaContactos.item(index,0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
-                var.ui.tablaContactos.item(index,1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaContactos.item(index,2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaContactos.item(index,3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
-                var.ui.tablaContactos.item(index,4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaContactos.item(index,5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaContactos.item(index,6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)                
-            index += 1
+            # Obtener el listado de contactos
+            listadoContactos = conexion.Conexion.listadoContactos()
+            # Manejar caso de listado vacío
+            if not listadoContactos:
+                var.ui.tablaContactos.setRowCount(1)  # Una fila para el mensaje
+                item = QtWidgets.QTableWidgetItem("No hay contactos para mostrar")
+                item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tablaContactos.setItem(0, 0, item)
+                var.ui.tablaContactos.setSpan(0, 0, 1, var.ui.tablaContactos.columnCount())  # Combinar celdas
+                return
+            # Configurar el número de filas en la tabla según el listado
+            var.ui.tablaContactos.setRowCount(len(listadoContactos))
+
+            # Enumerar el listado y añadir cada contacto a la tabla
+            for index, registro in enumerate(listadoContactos):
+                columnas = [(QtCore.Qt.AlignmentFlag.AlignCenter, 0),  # id
+                    (QtCore.Qt.AlignmentFlag.AlignLeft, 1),    # nombre
+                    (QtCore.Qt.AlignmentFlag.AlignLeft, 2),    # email
+                    (QtCore.Qt.AlignmentFlag.AlignCenter, 3),  # movil
+                    (QtCore.Qt.AlignmentFlag.AlignLeft, 4),    # ciudad
+                    (QtCore.Qt.AlignmentFlag.AlignLeft, 5),    # notas
+                    (QtCore.Qt.AlignmentFlag.AlignCenter, 6)   # fecha_alta
+                ]
+                for col, (alignment, i) in enumerate(columnas):
+                    item = QtWidgets.QTableWidgetItem(str(registro[i]))
+                    item.setTextAlignment(alignment)
+                    var.ui.tablaContactos.setItem(index, col, item)
         except Exception as e:
             print("error carga tabla contactos", e)
             
@@ -106,15 +107,19 @@ class Contactos:
              # Obtener el contacto seleccionado de la tabla
             fila = var.ui.tablaContactos.selectedItems()
             datos = [dato.text() for dato in fila]
-            # Obtener datos completos desde la base de datos usando la función que ya tienes
-            registro = conexion.Conexion.datosOneContacto(str(datos[0]))
-            # Asegurarse que no hay valores None
-            registro = [x if x != 'None' else '' for x in registro]            
+            # Obtener datos completos desde la base de datos
+            registro = conexion.Conexion.datosOneContacto(str(datos[0]))            
+            # Asegurarse de que no hay valores None
+            registro_limpio = []
+            for dato in registro:
+                if dato == 'None':
+                    registro_limpio.append('')
+                else:
+                    registro_limpio.append(dato)
             # Lista de campos UI en el mismo orden que vienen de la base de datos
-            listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, 
-                    var.ui.txtfechaalta]            
-            # Recorrer listado y asignar valores
+            listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
+            # Asignar valores directamente a los campos
             for i in range(len(listado)):
-                listado[i].setText(registro[i])
+                listado[i].setText(registro_limpio[i])
         except Exception as error:
             print("error cargaOneContacto", error)
