@@ -71,12 +71,17 @@ class Ui_venprincipal(object):
         self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
         
         # Crear tabla
-        self.tablaContactos = QtWidgets.QTableWidget(parent=self.pesContactos)
+        self.tablaContactos = QtWidgets.QTableWidget(self.pesContactos)
         self.tablaContactos.setObjectName("tablaContactos")
-        self.tablaContactos.setMinimumSize(QtCore.QSize(1200, 500))
         self.tablaContactos.setColumnCount(7)
-        self.tablaContactos.setRowCount(0)
         self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta"])
+        self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.tablaContactos.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.SingleSelection)
+        self.tablaContactos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tablaContactos.horizontalHeader().setStretchLastSection(True)
+        self.tablaContactos.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+        self.tablaContactos.verticalHeader().setVisible(False)
+        self.tablaContactos.setMinimumSize(QtCore.QSize(1200, 500))
         
         # Configurar propiedades de la tabla
         self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
@@ -185,12 +190,12 @@ class Ui_venprincipal(object):
         self.lblciudad.setMinimumSize(QtCore.QSize(50, 0))
         self.lblciudad.setMaximumSize(QtCore.QSize(60, 25))
         self.lblciudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        self.txtCiudad = QtWidgets.QLineEdit(parent=self.pesContactos)
-        self.txtCiudad.setObjectName("txtCiudad")
-        self.txtCiudad.setMinimumSize(QtCore.QSize(80, 0))
-        self.txtCiudad.setMaximumSize(QtCore.QSize(110, 25))
-        self.txtCiudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        self.txtCiudad.setStyleSheet("background-color: rgb(255, 255, 239);")
+        self.txtciudad = QtWidgets.QLineEdit(parent=self.pesContactos)
+        self.txtciudad.setObjectName("txtciudad")
+        self.txtciudad.setMinimumSize(QtCore.QSize(80, 0))
+        self.txtciudad.setMaximumSize(QtCore.QSize(110, 25))
+        self.txtciudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.txtciudad.setStyleSheet("background-color: rgb(255, 255, 239);")
 
         # Añadir widgets al gridLayout
         self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
@@ -203,7 +208,7 @@ class Ui_venprincipal(object):
         self.gridLayout_2.addWidget(self.lblnombre, 2, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
         self.gridLayout_2.addWidget(self.txtnombre, 2, 2, 1, 2)
         self.gridLayout_2.addWidget(self.lblciudad, 2, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.gridLayout_2.addWidget(self.txtCiudad, 2, 5, 1, 1)
+        self.gridLayout_2.addWidget(self.txtciudad, 2, 5, 1, 1)
         
         # Tercera fila (Email y Notas)
         self.gridLayout_2.addWidget(self.lblemail, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
@@ -311,7 +316,7 @@ class Ui_venprincipal(object):
         QtCore.QMetaObject.connectSlotsByName(venPrincipal)
         venPrincipal.setTabOrder(self.txtid, self.txtnombre)
         venPrincipal.setTabOrder(self.txtnotas, self.txtfechaalta)
-        venPrincipal.setTabOrder(self.txtmovil, self.txtCiudad)
+        venPrincipal.setTabOrder(self.txtmovil, self.txtciudad)
         venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
         venPrincipal.setTabOrder(self.botoneliminar, self.tablaContactos)
         

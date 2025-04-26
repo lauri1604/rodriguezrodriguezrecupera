@@ -34,7 +34,7 @@ class Contactos:
     def altaContacto(self):
         try:
             op = 0
-            nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.toPlainText()]
+            nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text()]
             if (nuevoContacto[0] != "" and nuevoContacto[1] != "" and nuevoContacto[2] != "" and nuevoContacto[3] != "" and nuevoContacto[4] != ""):
                 op = 1
                 if conexion.Conexion.altaContacto and op == 1:
@@ -72,33 +72,22 @@ class Contactos:
     @staticmethod
     def cargaTablaContactos(self):
         try:
-            # Obtener el listado de contactos
-            listadoContactos = conexion.Conexion.listadoContactos()
-            # Manejar caso de listado vacío
-            if not listadoContactos:
-                var.ui.tablaContactos.setRowCount(1)  # Una fila para el mensaje
-                item = QtWidgets.QTableWidgetItem("No hay contactos para mostrar")
-                item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaContactos.setItem(0, 0, item)
-                var.ui.tablaContactos.setSpan(0, 0, 1, var.ui.tablaContactos.columnCount())  # Combinar celdas
-                return
-            # Configurar el número de filas en la tabla según el listado
-            var.ui.tablaContactos.setRowCount(len(listadoContactos))
-
-            # Enumerar el listado y añadir cada contacto a la tabla
-            for index, registro in enumerate(listadoContactos):
-                columnas = [(QtCore.Qt.AlignmentFlag.AlignCenter, 0),  # id
-                    (QtCore.Qt.AlignmentFlag.AlignLeft, 1),    # nombre
-                    (QtCore.Qt.AlignmentFlag.AlignLeft, 2),    # email
-                    (QtCore.Qt.AlignmentFlag.AlignCenter, 3),  # movil
-                    (QtCore.Qt.AlignmentFlag.AlignLeft, 4),    # ciudad
-                    (QtCore.Qt.AlignmentFlag.AlignLeft, 5),    # notas
-                    (QtCore.Qt.AlignmentFlag.AlignCenter, 6)   # fecha_alta
-                ]
-                for col, (alignment, i) in enumerate(columnas):
-                    item = QtWidgets.QTableWidgetItem(str(registro[i]))
-                    item.setTextAlignment(alignment)
-                    var.ui.tablaContactos.setItem(index, col, item)
+            listadocont = conexion.Conexion.listadoContactos()  # Obtener todos los contactos
+            var.longcont = len(listadocont)  # Guardar el número total de contactos
+            index = 0
+            for registro in listadocont:
+                var.ui.tablaContactos.setRowCount(index + 1)
+                var.ui.tablaContactos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))  # ID
+                var.ui.tablaContactos.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))  # Nombre
+                var.ui.tablaContactos.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))  # Email
+                var.ui.tablaContactos.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))  # Móvil
+                var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))  # Ciudad
+                var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))  # Notas
+                var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))  # Fecha Alta                
+                # Opcional: Alineación de columnas
+                for col in range(7):  # Suponiendo que tienes 7 columnas
+                    var.ui.tablaContactos.item(index, col).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)            
+                index += 1
         except Exception as e:
             print("error carga tabla contactos", e)
             
