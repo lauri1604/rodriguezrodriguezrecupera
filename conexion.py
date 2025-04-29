@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 import var
 import sqlite3
+import var
 
 class Conexion:
     @staticmethod
@@ -52,10 +53,12 @@ class Conexion:
         except sqlite3.IntegrityError:
             return False
         
-    def listadoContactos(self):
+    @staticmethod
+    def listadoContactos():
         try:
             listado = []
             query = QtSql.QSqlQuery()
+            print(var.historico)
             if var.historico == 1:
                 query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
             elif var.historico == 0:

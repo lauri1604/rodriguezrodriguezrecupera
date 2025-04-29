@@ -47,7 +47,7 @@ class Contactos:
                     mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                     mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                     mbox.exec()
-                    Contactos.cargaTablaContactos(self)
+                    Contactos.cargaTablaContactos()
                 else:
                     mbox = QtWidgets.QMessageBox()
                     mbox.setWindowTitle("Aviso")
@@ -70,10 +70,10 @@ class Contactos:
             print("error alta contacto", error)
     
     @staticmethod
-    def cargaTablaContactos(self):
+    def cargaTablaContactos():
         try:
             listadocont = conexion.Conexion.listadoContactos()  # Obtener todos los contactos
-            var.longcont = len(listadocont)  # Guardar el número total de contactos
+            var.longcontacto = len(listadocont)  # Guardar el número total de contactos
             index = 0
             for registro in listadocont:
                 var.ui.tablaContactos.setRowCount(index + 1)
@@ -97,7 +97,7 @@ class Contactos:
             fila = var.ui.tablaContactos.selectedItems()
             datos = [dato.text() for dato in fila]
             # Obtener datos completos desde la base de datos
-            registro = conexion.Conexion.datosOneContacto(str(datos[0]))            
+            registro = conexion.Conexion.datosOneContacto(str(datos[0]))
             # Asegurarse de que no hay valores None
             registro_limpio = []
             for dato in registro:

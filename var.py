@@ -4,5 +4,5 @@ Ficheros de variables globales
 global ui
 global dlgAbrir
 global dlgAbout
-global historico
+historico = 1
 global longcontacto
