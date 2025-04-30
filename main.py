@@ -19,6 +19,8 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_conexion(self)
         var.dlgAbrir = FileDialogAbrir()
         var.dlgAbout = dlgAbout()
+        var.historico = 1
+        var.longcontacto = 0
 
         '''
         eventos del menubar y toolbar

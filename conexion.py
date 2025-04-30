@@ -37,7 +37,7 @@ class Conexion:
     def altaContacto(nuevoContacto):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT INTO contactos (nombre, email, movil, ciudad, notas, fecha_alta) VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
+            query.prepare("INSERT into contactos (nombre, email, movil, ciudad, notas, fecha_alta, "") VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
             query.bindValue(":nombre", nuevoContacto[1])
             query.bindValue(":email", nuevoContacto[2])
             query.bindValue(":movil", nuevoContacto[3])
@@ -52,14 +52,12 @@ class Conexion:
             print("Error al insertar el contacto: ", e)
         except sqlite3.IntegrityError:
             return False
-        
-    @staticmethod
-    def listadoContactos():
+    
+    def listadoContactos(self):
         try:
             listado = []
-            query = QtSql.QSqlQuery()
-            print(var.historico)
             if var.historico == 1:
+                query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
             elif var.historico == 0:
                 query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
@@ -86,14 +84,14 @@ class Conexion:
             print("Error datos un contacto", e)
             
     def datosContacto(id):
-        Query = QtSql.QSqlQuery()
-        Query.prepare("SELECT * FROM CONTACTOS WHERE id = :id")
-        Query.bindValue(":id", str(id))
-        if Query.exec():
-            while Query.next():
+        query = QtSql.QSqlQuery()
+        query.prepare("SELECT * FROM CONTACTOS WHERE id = :id")
+        query.bindValue(":id", str(id))
+        if query.exec():
+            while query.next():
                 fila = []
-                for i in range(Query.record().count()):
-                    fila.append(str(Query.value(i)))
+                for i in range(query.record().count()):
+                    fila.append(str(query.value(i)))
                 return fila
             
     def modificarContacto(registro):

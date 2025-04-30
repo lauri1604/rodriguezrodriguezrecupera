@@ -70,10 +70,10 @@ class Contactos:
             print("error alta contacto", error)
     
     @staticmethod
-    def cargaTablaContactos():
+    def cargaTablaContactos(self):
         try:
-            listadocont = conexion.Conexion.listadoContactos()  # Obtener todos los contactos
-            var.longcontacto = len(listadocont)  # Guardar el número total de contactos
+            listadocont = conexion.Conexion.listadoContactos(self)
+            var.longcontacto = len(listadocont)
             index = 0
             for registro in listadocont:
                 var.ui.tablaContactos.setRowCount(index + 1)
@@ -83,10 +83,14 @@ class Contactos:
                 var.ui.tablaContactos.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))  # Móvil
                 var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))  # Ciudad
                 var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))  # Notas
-                var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))  # Fecha Alta                
-                # Opcional: Alineación de columnas
-                for col in range(7):  # Suponiendo que tienes 7 columnas
-                    var.ui.tablaContactos.item(index, col).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)            
+                var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))  # Fecha Alta
+                var.ui.tablaContactos.item(index,0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaContactos.item(index,5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
                 index += 1
         except Exception as e:
             print("error carga tabla contactos", e)
@@ -98,17 +102,13 @@ class Contactos:
             datos = [dato.text() for dato in fila]
             # Obtener datos completos desde la base de datos
             registro = conexion.Conexion.datosOneContacto(str(datos[0]))
-            # Asegurarse de que no hay valores None
-            registro_limpio = []
-            for dato in registro:
-                if dato == 'None':
-                    registro_limpio.append('')
-                else:
-                    registro_limpio.append(dato)
+            registro = [x if x != 'None' else '' for x in registro]
             # Lista de campos UI en el mismo orden que vienen de la base de datos
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
-            # Asignar valores directamente a los campos
             for i in range(len(listado)):
-                listado[i].setText(registro_limpio[i])
+                if i == 7 or i == 8:
+                    listado[i].setCurrentText(registro[i])
+                else:
+                    listado[i].setText(registro[i])
         except Exception as error:
             print("error cargaOneContacto", error)
