@@ -79,7 +79,7 @@ class Contactos:
                 var.ui.tablaContactos.setRowCount(index + 1)
                 var.ui.tablaContactos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))  # ID
                 var.ui.tablaContactos.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))  # Nombre
-                var.ui.tablaContactos.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))  # Email
+                var.ui.tablaContactos.setItem(index, 2, QtWidgets.QTableWidgetItem(str(" " +  registro[2] + " ")))  # Email
                 var.ui.tablaContactos.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))  # Móvil
                 var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))  # Ciudad
                 var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))  # Notas
@@ -102,11 +102,11 @@ class Contactos:
             datos = [dato.text() for dato in fila]
             # Obtener datos completos desde la base de datos
             registro = conexion.Conexion.datosOneContacto(str(datos[0]))
-            registro = [x if x != 'None' else '' for x in registro]
+            listado = [x if x != 'None' else '' for x in registro]
             # Lista de campos UI en el mismo orden que vienen de la base de datos
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i in range(len(listado)):
-                if i == 7 or i == 8:
+                if i == 6 or i == 7:
                     listado[i].setCurrentText(registro[i])
                 else:
                     listado[i].setText(registro[i])

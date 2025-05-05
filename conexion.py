@@ -5,7 +5,6 @@ import os
 import var
 import sqlite3
 import var
-
 class Conexion:
     @staticmethod
     def db_conexion(self = None):
@@ -16,11 +15,9 @@ class Conexion:
         
         db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
         db.setDatabaseName('bbdd.db')
-
         if db.open():
             query = QtSql.QSqlQuery()
             query.exec("SELECT name FROM sqlite_master WHERE type='table';")
-
             if not query.next():
                 QtWidgets.QMessageBox.critical(None, 'Error', 'Base de datos vacía o no válida.',
                                             QtWidgets.QMessageBox.StandardButton.Cancel)
@@ -65,6 +62,14 @@ class Conexion:
                 while query.next():
                     fila = [query.value(i) for i in range(query.record().count())]
                     listado.append(fila)
+                return listado
+            elif var.historico == 0:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
                 return listado
         except Exception as e:
             print("Error listado en conexion", e)
