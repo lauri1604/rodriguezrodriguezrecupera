@@ -55,15 +55,14 @@ class Conexion:
     def listadoContactos(self):
         try:
             listado = []
-            if var.historico == 1:
-                query = QtSql.QSqlQuery()
-                query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
-                if query.exec():
-                    while query.next():
-                        fila = [query.value(i) for i in range(query.record().count())]
-                        listado.append(fila)
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
                 return listado
-            elif var.historico == 0:
+            else:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM CONTACTOS is NULL ORDER BY nombre ASC")
                 if query.exec():
