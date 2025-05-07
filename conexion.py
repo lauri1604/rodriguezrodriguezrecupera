@@ -33,14 +33,16 @@ class Conexion:
     
     def altaContacto(nuevoContacto):
         try:
+            print(nuevoContacto)
+            
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT into contactos (nombre, email, movil, ciudad, notas, fecha_alta, "") VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
-            query.bindValue(":nombre", nuevoContacto[1])
-            query.bindValue(":email", nuevoContacto[2])
-            query.bindValue(":movil", nuevoContacto[3])
-            query.bindValue(":ciudad", nuevoContacto[4])
-            query.bindValue(":notas", nuevoContacto[5])
-            query.bindValue(":fecha_alta", nuevoContacto[6])
+            query.prepare("INSERT into CONTACTOS (nombre, email, movil, ciudad, notas, fecha_alta, "") VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
+            query.bindValue(":nombre", str(nuevoContacto[0]))
+            query.bindValue(":email", str(nuevoContacto[1]))
+            query.bindValue(":movil", str(nuevoContacto[2]))
+            query.bindValue(":ciudad", str(nuevoContacto[3]))
+            query.bindValue(":notas", str(nuevoContacto[4]))
+            query.bindValue(":fecha_alta", str(nuevoContacto[5]))
             if query.exec():
                 return True
             else:
@@ -56,16 +58,14 @@ class Conexion:
             if var.historico == 1:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
-            elif var.historico == 0:
-                query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
-            if query.exec():
-                while query.next():
-                    fila = [query.value(i) for i in range(query.record().count())]
-                    listado.append(fila)
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
                 return listado
             elif var.historico == 0:
                 query = QtSql.QSqlQuery()
-                query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
+                query.prepare("SELECT * FROM CONTACTOS is NULL ORDER BY nombre ASC")
                 if query.exec():
                     while query.next():
                         fila = [query.value(i) for i in range(query.record().count())]

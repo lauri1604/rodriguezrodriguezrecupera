@@ -21,7 +21,8 @@ class Main(QtWidgets.QMainWindow):
         var.dlgAbout = dlgAbout()
         var.historico = 1
         var.longcontacto = 0
-
+        
+        
         '''
         eventos del menubar y toolbar
         '''

@@ -67,7 +67,7 @@ class Eventos(QtWidgets.QMainWindow):
             var.dlgabrir.centrarEnPantalla()
             if var.dlgabrir.accept and fichero:
                 fichzip = zipfile.ZipFile(fichero, 'w')
-                fichzip.write('bbdd.sqlite', os.path.basename('bbdd.sqlite'), zipfile.ZIP_DEFLATED)
+                fichzip.write('bbdd.sqlite', os.path.basename('bbdd.db'), zipfile.ZIP_DEFLATED)
                 fichzip.close()
                 shutil.move(fichero, directorio)
                 mbox = QtWidgets.QMessageBox()
@@ -103,8 +103,7 @@ class Eventos(QtWidgets.QMainWindow):
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 conexion.Conexion.db_conexion(self)
-                eventos.Eventos.cargarProv(self)
-                contactos.Contactos.cargaTablaCientes(self)
+                contactos.Contactos.cargaTablaContactos(self)
         except Exception as error:
             print("error en resturar backup: ", error)
             

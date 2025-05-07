@@ -33,11 +33,11 @@ class Contactos:
 
     def altaContacto(self):
         try:
-            op = 0
-            nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text()]
-            if (nuevoContacto[0] != "" and nuevoContacto[1] != "" and nuevoContacto[2] != "" and nuevoContacto[3] != "" and nuevoContacto[4] != ""):
-                op = 1
-                if conexion.Conexion.altaContacto and op == 1:
+            
+            nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text(), var.ui.txtfechaalta.text()]
+            if nuevoContacto[0] != "" and nuevoContacto[1] != "" and nuevoContacto[2] != "" and nuevoContacto[3] != "" and nuevoContacto[4] != "" and nuevoContacto[5] != "":
+              
+                if conexion.Conexion.altaContacto:
                     mbox = QtWidgets.QMessageBox()
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                     mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
@@ -47,7 +47,7 @@ class Contactos:
                     mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                     mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                     mbox.exec()
-                    Contactos.cargaTablaContactos()
+                    Contactos.cargaTablaContactos(self)
                 else:
                     mbox = QtWidgets.QMessageBox()
                     mbox.setWindowTitle("Aviso")
@@ -106,7 +106,7 @@ class Contactos:
             # Lista de campos UI en el mismo orden que vienen de la base de datos
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i in range(len(listado)):
-                if i == 6 or i == 7:
+                if i == 5 or i == 6:
                     listado[i].setCurrentText(registro[i])
                 else:
                     listado[i].setText(registro[i])
