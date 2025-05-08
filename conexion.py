@@ -36,7 +36,7 @@ class Conexion:
             print(nuevoContacto)
             
             query = QtSql.QSqlQuery()
-            query.prepare("INSERT into CONTACTOS (nombre, email, movil, ciudad, notas, fecha_alta, "") VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
+            query.prepare("INSERT into CONTACTOS (nombre, email, movil, ciudad, notas, fecha_alta ) VALUES (:nombre, :email, :movil, :ciudad, :notas, :fecha_alta)")
             query.bindValue(":nombre", str(nuevoContacto[0]))
             query.bindValue(":email", str(nuevoContacto[1]))
             query.bindValue(":movil", str(nuevoContacto[2]))

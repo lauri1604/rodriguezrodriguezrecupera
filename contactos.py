@@ -33,11 +33,9 @@ class Contactos:
 
     def altaContacto(self):
         try:
-            
             nuevoContacto = [var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text(), var.ui.txtfechaalta.text()]
             if nuevoContacto[0] != "" and nuevoContacto[1] != "" and nuevoContacto[2] != "" and nuevoContacto[3] != "" and nuevoContacto[4] != "" and nuevoContacto[5] != "":
-              
-                if conexion.Conexion.altaContacto:
+                if conexion.Conexion.altaContacto(nuevoContacto):
                     mbox = QtWidgets.QMessageBox()
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                     mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
