@@ -100,13 +100,45 @@ class Contactos:
             datos = [dato.text() for dato in fila]
             # Obtener datos completos desde la base de datos
             registro = conexion.Conexion.datosOneContacto(str(datos[0]))
-            listado = [x if x != 'None' else '' for x in registro]
-            # Lista de campos UI en el mismo orden que vienen de la base de datos
+            registro = [x if x != 'None' else '' for x in registro]
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i in range(len(listado)):
-                if i == 5 or i == 6:
+                if i == 6 or i == 7:
                     listado[i].setCurrentText(registro[i])
                 else:
                     listado[i].setText(registro[i])
         except Exception as error:
             print("error cargaOneContacto", error)
+            
+    def modificarContacto(self):
+        try:
+            modificarContacto = [var.ui.txtid.text(), var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text(), var.ui.txtfechaalta.text()]
+            for i, dato in enumerate(modificarContacto):
+                if i == 4 or i == 7:
+                    pass
+                else:
+                    if dato == "":
+                        conexion.Conexion.modificarContacto(modificarContacto)
+                        mbox = QtWidgets.QMessageBox()
+                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                        mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+                        mbox.setWindowTitle('Aviso')
+                        mbox.setText("Datos contacto modificados")
+                        mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                        mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                        mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                        mbox.exec()
+                        Contactos.cargaTablaContactos(self)
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Faltan datos obligatorios o contacto no Existe.")
+                mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Contactos.cargaTablaContactos(self)
+        except Exception as e:
+            print("error modificarContacto", e)

@@ -20,7 +20,7 @@ class Main(QtWidgets.QMainWindow):
         var.dlgAbrir = FileDialogAbrir()
         var.dlgAbout = dlgAbout()
         var.longcontacto = 0
-        
+        contactos.Contactos.cargaTablaContactos(self)
         
         '''
         eventos del menubar y toolbar
@@ -38,6 +38,7 @@ class Main(QtWidgets.QMainWindow):
         eventos de botones
         '''
         var.ui.botonalta.clicked.connect(contactos.Contactos.altaContacto)
+        var.ui.botonmodificar.clicked.connect(contactos.Contactos.modificarContacto)
         
         '''
         eventos de tablas

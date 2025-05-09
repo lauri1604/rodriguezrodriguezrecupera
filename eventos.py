@@ -132,7 +132,7 @@ class Eventos(QtWidgets.QMainWindow):
         try:
             header = var.ui.tablaContactos.horizontalHeader()
             for i in range(header.count()):
-                if i == 1 or i == 2 or i == 4 or i == 5:
+                if (i == 1 or i == 2 or i == 4 or i == 5):
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
                 else:
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
