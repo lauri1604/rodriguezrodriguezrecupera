@@ -54,7 +54,7 @@ class Conexion:
         try:
             listado = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT * FROM CONTACTOS WHERE fecha_alta is NULL ORDER BY nombre ASC")
+            query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
             if query.exec():
                 while query.next():
                     fila = [query.value(i) for i in range(query.record().count())]
@@ -99,32 +99,21 @@ class Conexion:
     def modificarContacto(registro):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT count(*) FROM CONTACTOS WHERE id = :id")
-            query.bindValue(":id", str(registro[0]))
+            query.prepare("UPDATE CONTACTOS SET nombre = :nombre, email = :email, movil = :movil, ciudad = :ciudad, notas = :notas, fecha_alta = :fecha_alta WHERE id = :id")
+            query.bindValue(":id", registro[0]) 
+            query.bindValue(":nombre", registro[1])
+            query.bindValue(":email", registro[2])
+            query.bindValue(":movil", registro[3])
+            query.bindValue(":ciudad", registro[4])
+            query.bindValue(":notas", registro[5])            
+            if registro[6] == "":
+                query.bindValue(":fecha_alta", QtCore.QVariant())  # Valor nulo si está vacío
+            else:
+                query.bindValue(":fecha_alta", str(registro[6]))  # Convertir a string si hay valor
             if query.exec():
-                if query.next() and query.value(0)>0:
-                    if query.exec():
-                        query = QtSql.QSqlQuery()
-                        query.prepare("UPDATE CONTACTOS SET fecha_alta = :fecha_alta,  nombre = :nombre", "email = :email, movil = :movil, ciudad = :ciudad, notas = :notas WHERE id = :id")
-                        query.bindValue(":id", str(registro[0]))
-                        query.bindValue(":nombre", str(registro[1]))
-                        query.bindValue(":email", str(registro[2]))
-                        query.bindValue(":movil", str(registro[3]))
-                        query.bindValue(":ciudad", str(registro[4]))
-                        query.bindValue(":notas", str(registro[5]))
-                        query.bindValue(":fecha_alta", str(registro[6]))
-                        if registro[7] == "":
-                            query.bindValue(":fecha_alta", QtCore.QVariant())
-                        else:
-                            query.bindValue(":fecha_alta", str(registro[7]))
-                        if query.exec():
-                            return True
-                        else:
-                            return False
-                    else:
-                        return False
-                else:
-                    return False
+                pass
+            else:
+                pass
         except Exception as e:
             print("Error modificar contacto: ", e)
             

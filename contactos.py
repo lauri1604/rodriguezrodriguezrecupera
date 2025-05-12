@@ -104,7 +104,7 @@ class Contactos:
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i in range(len(listado)):
                 if i == 6 or i == 7:
-                    listado[i].setCurrentText(registro[i])
+                    listado[i].setText(registro[i])
                 else:
                     listado[i].setText(registro[i])
         except Exception as error:
@@ -112,23 +112,26 @@ class Contactos:
             
     def modificarContacto(self):
         try:
+            contactomodificado = True
             modificarContacto = [var.ui.txtid.text(), var.ui.txtnombre.text().title(), var.ui.txtemail.text(), var.ui.txtmovil.text(), var.ui.txtciudad.text(), var.ui.txtnotas.text(), var.ui.txtfechaalta.text()]
             for i, dato in enumerate(modificarContacto):
                 if i == 4 or i == 7:
                     pass
                 else:
                     if dato == "":
-                        conexion.Conexion.modificarContacto(modificarContacto)
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                        mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setText("Datos contacto modificados")
-                        mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                        mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                        mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                        mbox.exec()
-                        Contactos.cargaTablaContactos(self)
+                        contactomodificado = False
+            if contactomodificado == True:
+                conexion.Conexion.modificarContacto(modificarContacto)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Datos contacto modificados")
+                mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Contactos.cargaTablaContactos(self)
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
