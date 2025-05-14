@@ -82,7 +82,7 @@ class Contactos:
                 var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))  # Ciudad
                 var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))  # Notas
                 var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))  # Fecha Alta
-                var.ui.tablaContactos.setItem(index, 7, QtWidgets.QTableWidgetItem(str(registro[6])))  # oculto
+                var.ui.tablaContactos.setItem(index, 7, QtWidgets.QTableWidgetItem(str(registro[7])))  # oculto
                 var.ui.tablaContactos.item(index,0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
                 var.ui.tablaContactos.item(index,1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaContactos.item(index,2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
@@ -90,6 +90,7 @@ class Contactos:
                 var.ui.tablaContactos.item(index,4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaContactos.item(index,5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
                 var.ui.tablaContactos.item(index,6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                var.ui.tablaContactos.item(index,7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
                 index += 1
         except Exception as e:
             print("error carga tabla contactos", e)
@@ -104,7 +105,7 @@ class Contactos:
             registro = [x if x != 'None' else '' for x in registro]
             listado = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i in range(len(listado)):
-                if i == 6 or i == 7:
+                if i == 5 or i == 6:
                     listado[i].setText(registro[i])
                 else:
                     listado[i].setText(registro[i])

@@ -100,7 +100,7 @@ class Ui_venprincipal(object):
         self.tablaContactos.setColumnWidth(4, 130)   # Ciudad
         self.tablaContactos.setColumnWidth(5, 230)   # Notas
         self.tablaContactos.setColumnWidth(6, 90)    # Fecha Alta 
-        self.tablaContactos.setColumnWidth(7, 80)    # oculto
+        self.tablaContactos.setColumnWidth(7, 80)    # Oculto
         
         # ID
         self.lblid= QtWidgets.QLabel(parent=self.pesContactos)
@@ -227,7 +227,7 @@ class Ui_venprincipal(object):
         # Botones y tabla
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
         self.gridLayout_2.addWidget(self.tablaContactos, 7, 1, 1, 5)      # Tabla
-        self.gridLayout_2.addItem(self.verticalSpacer_2, 7, 0, 1, 7)      # Spacer inferior
+        self.gridLayout_2.addItem(self.verticalSpacer_2, 7, 1, 1, 7)      # Spacer inferior
         
         # Configurar columnas para mejor alineación
         self.gridLayout_2.setColumnMinimumWidth(1, 100)   # Labels izquierda
@@ -352,4 +352,4 @@ class Ui_venprincipal(object):
             item = self.tablaContactos.horizontalHeaderItem(6)
             item.setText(_translate("venPrincipal", "Fecha Alta"))
             item = self.tablaContactos.horizontalHeaderItem(7)
-            item.setText(_translate("venPrincipal", "oculto"))
+            item.setText(_translate("venPrincipal", "Oculto"))
