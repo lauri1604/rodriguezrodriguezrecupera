@@ -82,6 +82,7 @@ class Contactos:
                 var.ui.tablaContactos.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))  # Ciudad
                 var.ui.tablaContactos.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5])))  # Notas
                 var.ui.tablaContactos.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[6])))  # Fecha Alta
+                var.ui.tablaContactos.setItem(index, 7, QtWidgets.QTableWidgetItem(str(registro[6])))  # oculto
                 var.ui.tablaContactos.item(index,0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
                 var.ui.tablaContactos.item(index,1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaContactos.item(index,2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
