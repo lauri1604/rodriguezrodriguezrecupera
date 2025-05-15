@@ -117,4 +117,8 @@ class Conexion:
         except Exception as e:
             print("Error modificar contacto: ", e)
             
-    
+    def eliminarContacto():
+        """
+        Modulo que oculta los contactos al usuario si pone "si", sino no
+
+        """
