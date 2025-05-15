@@ -73,8 +73,8 @@ class Ui_venprincipal(object):
         # Crear tabla
         self.tablaContactos = QtWidgets.QTableWidget(self.pesContactos)
         self.tablaContactos.setObjectName("tablaContactos")
-        self.tablaContactos.setColumnCount(8)
-        self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta", "Oculto"])
+        self.tablaContactos.setColumnCount(7)
+        self.tablaContactos.setHorizontalHeaderLabels(["ID", "Nombre", "Email", "Móvil", "Ciudad", "Notas", "Fecha Alta"])
         self.tablaContactos.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tablaContactos.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.SingleSelection)
         self.tablaContactos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
@@ -99,8 +99,7 @@ class Ui_venprincipal(object):
         self.tablaContactos.setColumnWidth(3, 85)    # Móvil
         self.tablaContactos.setColumnWidth(4, 130)   # Ciudad
         self.tablaContactos.setColumnWidth(5, 230)   # Notas
-        self.tablaContactos.setColumnWidth(6, 90)    # Fecha Alta 
-        self.tablaContactos.setColumnWidth(7, 80)    # Oculto
+        self.tablaContactos.setColumnWidth(6, 90)    # Fecha Alta
         
         # ID
         self.lblid= QtWidgets.QLabel(parent=self.pesContactos)
@@ -226,7 +225,7 @@ class Ui_venprincipal(object):
 
         # Botones y tabla
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
-        self.gridLayout_2.addWidget(self.tablaContactos, 7, 1, 1, 5)      # Tabla
+        self.gridLayout_2.addWidget(self.tablaContactos, 6, 1, 1, 5)      # Tabla
         self.gridLayout_2.addItem(self.verticalSpacer_2, 7, 1, 1, 7)      # Spacer inferior
         
         # Configurar columnas para mejor alineación
@@ -351,5 +350,3 @@ class Ui_venprincipal(object):
             item.setText(_translate("venPrincipal", "Notas"))
             item = self.tablaContactos.horizontalHeaderItem(6)
             item.setText(_translate("venPrincipal", "Fecha Alta"))
-            item = self.tablaContactos.horizontalHeaderItem(7)
-            item.setText(_translate("venPrincipal", "Oculto"))
