@@ -117,8 +117,23 @@ class Conexion:
         except Exception as e:
             print("Error modificar contacto: ", e)
             
-    def eliminarContacto():
+    def eliminarContacto(datos):
         """
         Modulo que oculta los contactos al usuario si pone "si", sino no
-
         """
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT count(*) FROM CONTACTOS WHERE id = :id")
+            query.bindValue(":id", str(datos[1]))
+            if query.exec():
+                if query.next() and query.value(0) > 0:
+                    query = QtSql.QSqlQuery()
+                    query.prepare("UPDATE CONTACTOS SET oculto = :oculto WHERE id = :id")
+                    query.bindValue(":oculto", "si")
+                    query.bindValue(":id", str(datos[1]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as e:
+            print("error eliminar contacto en conexión", e)

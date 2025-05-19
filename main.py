@@ -39,7 +39,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.botonalta.clicked.connect(contactos.Contactos.altaContacto)
         var.ui.botonmodificar.clicked.connect(contactos.Contactos.modificarContacto)
-        
+        var.ui.botoneliminar.clicked.connect(contactos.Contactos.eliminarContacto)
         '''
         eventos de tablas
         '''

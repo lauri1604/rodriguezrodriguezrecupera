@@ -145,3 +145,39 @@ class Contactos:
                 Contactos.cargaTablaContactos(self)
         except Exception as e:
             print("error modificarContacto", e)
+            
+    def eliminarContacto(self):
+        try:
+            oculto = True
+            datos = [var.ui.txtid.text()]
+            if datos[1] != "":
+                oculto = True
+            else:
+                oculto = False
+            if oculto == True:
+                conexion.Conexion.eliminarContacto(datos)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Contacto eliminado")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Contactos.cargaTablaContactos(self)
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Error: Contacto no existe, èliminado")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Contactos.cargaTablaContactos(self)
+        except Exception as e:
+            print("error eliminar contacto", e)
