@@ -105,7 +105,7 @@ class Conexion:
             query.bindValue(":email", registro[2])
             query.bindValue(":movil", registro[3])
             query.bindValue(":ciudad", registro[4])
-            query.bindValue(":notas", registro[5])            
+            query.bindValue(":notas", registro[5])
             if registro[6] == "":
                 query.bindValue(":fecha_alta", QtCore.QVariant())  # Valor nulo si está vacío
             else:
@@ -124,13 +124,13 @@ class Conexion:
         try:
             query = QtSql.QSqlQuery()
             query.prepare("SELECT count(*) FROM CONTACTOS WHERE id = :id")
-            query.bindValue(":id", str(datos[1]))
+            query.bindValue(":id", str(datos[0]))
             if query.exec():
                 if query.next() and query.value(0) > 0:
                     query = QtSql.QSqlQuery()
                     query.prepare("UPDATE CONTACTOS SET oculto = :oculto WHERE id = :id")
                     query.bindValue(":oculto", "si")
-                    query.bindValue(":id", str(datos[1]))
+                    query.bindValue(":id", str(datos[0]))
             if query.exec():
                 return True
             else:

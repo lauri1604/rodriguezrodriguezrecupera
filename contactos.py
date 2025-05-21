@@ -150,7 +150,7 @@ class Contactos:
         try:
             oculto = True
             datos = [var.ui.txtid.text()]
-            if datos[1] != "":
+            if datos[0] != "":
                 oculto = True
             else:
                 oculto = False
@@ -172,7 +172,7 @@ class Contactos:
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.ico'))
                 mbox.setWindowTitle('Aviso')
-                mbox.setText("Error: Contacto no existe, èliminado")
+                mbox.setText("Error: Contacto no existe o id no existe")
                 mbox.setStandardButtons(
                     QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
