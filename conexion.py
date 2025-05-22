@@ -62,7 +62,7 @@ class Conexion:
                 return listado
             else:
                 query = QtSql.QSqlQuery()
-                query.prepare("SELECT * FROM CONTACTOS ORDER BY nombre ASC")
+                query.prepare("SELECT * FROM CONTACTOS WHERE oculto != si ORDER BY nombre ASC")
                 if query.exec():
                     while query.next():
                         fila = [query.value(i) for i in range(query.record().count())]

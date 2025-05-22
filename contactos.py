@@ -74,6 +74,7 @@ class Contactos:
             var.longcontacto = len(listadocont)
             index = 0
             for registro in listadocont:
+                
                 var.ui.tablaContactos.setRowCount(index + 1)
                 var.ui.tablaContactos.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))  # ID
                 var.ui.tablaContactos.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))  # Nombre
