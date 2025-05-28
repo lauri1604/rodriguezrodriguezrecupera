@@ -198,6 +198,17 @@ class Ui_venprincipal(object):
         self.txtciudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.txtciudad.setStyleSheet("background-color: rgb(255, 255, 239);")
 
+        #Histórico
+        self.checkhistorico = QtWidgets.QCheckBox(parent=self.pesContactos)
+        self.checkhistorico.setObjectName("Historico")
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkhistorico.sizePolicy().hasHeightForWidth())
+        self.checkhistorico.setSizePolicy(sizePolicy)
+        self.checkhistorico.setMinimumSize(QtCore.QSize(110, 0))
+        self.checkhistorico.setMaximumSize(QtCore.QSize(150, 16777215))
+        
         # Añadir widgets al gridLayout
         self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
         
@@ -222,6 +233,7 @@ class Ui_venprincipal(object):
         self.gridLayout_2.addWidget(self.txtmovil, 4, 2, 1, 1)
         self.gridLayout_2.addWidget(self.lblfechaalta, 4, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
         self.gridLayout_2.addWidget(self.txtfechaalta, 4, 5, 1, 1)
+        self.gridLayout_2.addWidget(self.checkhistorico,5, 5, 1, 1)
 
         # Botones y tabla
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
@@ -240,7 +252,7 @@ class Ui_venprincipal(object):
         self.gridLayout_2.setColumnStretch(6, 1)  # Stretch derecha
         
         # Ajustar espaciado vertical
-        self.gridLayout_2.setRowMinimumHeight(4, 30)  # Espacio antes de botones
+        self.gridLayout_2.setRowMinimumHeight(4, 40)  # Espacio antes de botones
         self.gridLayout_2.setRowMinimumHeight(5, 20)  # Espacio antes de tabla
               
         # Añadir pestaña y panel principal
@@ -319,7 +331,8 @@ class Ui_venprincipal(object):
         venPrincipal.setTabOrder(self.txtnotas, self.txtfechaalta)
         venPrincipal.setTabOrder(self.txtmovil, self.txtciudad)
         venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
-        venPrincipal.setTabOrder(self.botoneliminar, self.tablaContactos)
+        venPrincipal.setTabOrder(self.botoneliminar, self.checkhistorico)
+        #venPrincipal.setTabOrder(self.tablaContactos)
         
     def retranslateUi(self, venPrincipal):
             _translate = QtCore.QCoreApplication.translate
@@ -350,3 +363,4 @@ class Ui_venprincipal(object):
             item.setText(_translate("venPrincipal", "Notas"))
             item = self.tablaContactos.horizontalHeaderItem(6)
             item.setText(_translate("venPrincipal", "Fecha Alta"))
+            self.checkhistorico.setText(_translate("venprincipal", "Histórico"))
