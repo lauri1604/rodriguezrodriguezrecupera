@@ -332,7 +332,7 @@ class Ui_venprincipal(object):
         venPrincipal.setTabOrder(self.txtmovil, self.txtciudad)
         venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
         venPrincipal.setTabOrder(self.botoneliminar, self.checkhistorico)
-        #venPrincipal.setTabOrder(self.tablaContactos)
+        
         
     def retranslateUi(self, venPrincipal):
             _translate = QtCore.QCoreApplication.translate

@@ -20,7 +20,7 @@ class Main(QtWidgets.QMainWindow):
         var.dlgAbrir = FileDialogAbrir()
         var.dlgAbout = dlgAbout()
         var.longcontacto = 0
-        
+        var.historico = 1
         contactos.Contactos.cargaTablaContactos(self)
         
         '''
