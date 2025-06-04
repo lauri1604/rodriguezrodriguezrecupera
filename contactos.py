@@ -181,13 +181,3 @@ class Contactos:
                 Contactos.cargaTablaContactos(self)
         except Exception as e:
             print("error eliminar contacto", e)
-            
-    def historicoContactos(self):
-        try:
-            if var.ui.checkhistorico.isChecked():
-                var.historico = 0
-            else:
-                var.historico = 1
-                Contactos.cargaTablaContactos(self)
-        except exception as error:
-            print("checkbox histórico", error)

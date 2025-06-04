@@ -51,7 +51,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos checkbox
         '''
-        var.ui.checkhistorico.stateChanged.connect(contactos.Contactos.historicoContactos)
+        
 
     def closeEvent(self, event):
         mbox = QtWidgets.QMessageBox()

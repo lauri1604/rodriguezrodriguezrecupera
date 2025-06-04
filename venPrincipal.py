@@ -197,17 +197,6 @@ class Ui_venprincipal(object):
         self.txtciudad.setMaximumSize(QtCore.QSize(110, 25))
         self.txtciudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.txtciudad.setStyleSheet("background-color: rgb(255, 255, 239);")
-
-        #Histórico
-        self.checkhistorico = QtWidgets.QCheckBox(parent=self.pesContactos)
-        self.checkhistorico.setObjectName("Historico")
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.checkhistorico.sizePolicy().hasHeightForWidth())
-        self.checkhistorico.setSizePolicy(sizePolicy)
-        self.checkhistorico.setMinimumSize(QtCore.QSize(110, 0))
-        self.checkhistorico.setMaximumSize(QtCore.QSize(150, 16777215))
         
         # Añadir widgets al gridLayout
         self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
@@ -233,7 +222,6 @@ class Ui_venprincipal(object):
         self.gridLayout_2.addWidget(self.txtmovil, 4, 2, 1, 1)
         self.gridLayout_2.addWidget(self.lblfechaalta, 4, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
         self.gridLayout_2.addWidget(self.txtfechaalta, 4, 5, 1, 1)
-        self.gridLayout_2.addWidget(self.checkhistorico,5, 5, 1, 1)
 
         # Botones y tabla
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
@@ -269,13 +257,9 @@ class Ui_venprincipal(object):
         self.menuArchivo.setObjectName("menuArchivo")
         self.menuArchivo.setTitle("Archivo")
         
-        self.menuGestion = QtWidgets.QMenu(parent=self.menubar)
-        self.menuGestion.setObjectName("menuGestion")
-        self.menuGestion.setTitle("Gestión")
-
-        self.menuHerramientas = QtWidgets.QMenu(parent=self.menubar)
-        self.menuHerramientas.setObjectName("menuHerramientas")
-        self.menuHerramientas.setTitle("Herramientas")
+        self.menuInformes = QtWidgets.QMenu(parent=self.menubar)
+        self.menuInformes.setObjectName("menuInformes")
+        self.menuInformes.setTitle("Informes")
 
         self.menuAyuda = QtWidgets.QMenu(parent=self.menubar)
         self.menuAyuda.setObjectName("menuAyuda")
@@ -294,16 +278,12 @@ class Ui_venprincipal(object):
         self.actionSalir = QtGui.QAction(venPrincipal)
         self.actionSalir.setObjectName("actionSalir")
         self.actionSalir.setText("Salir")
-
-        # Crear acciones para el menú Herramientas
-        self.actionCrear_Backup = QtGui.QAction(venPrincipal)
-        self.actionCrear_Backup.setObjectName("actionCrear_Backup")
-        self.actionCrear_Backup.setText("Crear Backup")
-
-        self.actionRestaurar_Backup = QtGui.QAction(venPrincipal)
-        self.actionRestaurar_Backup.setObjectName("actionRestaurar_Backup")
-        self.actionRestaurar_Backup.setText("Restaurar Backup")
-
+        
+        # Crear acciones para el menú Ayuda
+        self.actionListado_contactos = QtGui.QAction(venPrincipal)
+        self.actionListado_contactos.setObjectName("actionListado_contactos")
+        self.actionListado_contactos.setText("Listado contactos")
+        
         # Crear acciones para el menú Ayuda
         self.actionAcercaDe = QtGui.QAction(venPrincipal)
         self.actionAcercaDe.setObjectName("actionAcercaDe")
@@ -311,17 +291,12 @@ class Ui_venprincipal(object):
 
         # Añadir acciones a los menús
         self.menuArchivo.addAction(self.actionSalir)
-        
-        # Añadir acciones a Herramientas
-        self.menuHerramientas.addAction(self.actionCrear_Backup)
-        self.menuHerramientas.addAction(self.actionRestaurar_Backup)
-        
+        self.menuInformes.addAction(self.actionListado_contactos)
         self.menuAyuda.addAction(self.actionAcercaDe)
         
         # Añadir menús a la barra de menú
         self.menubar.addAction(self.menuArchivo.menuAction())
-        self.menubar.addAction(self.menuGestion.menuAction())
-        self.menubar.addAction(self.menuHerramientas.menuAction())
+        self.menubar.addAction(self.menuInformes.menuAction())
         self.menubar.addAction(self.menuAyuda.menuAction())
         
         self.retranslateUi(venPrincipal)
@@ -331,8 +306,7 @@ class Ui_venprincipal(object):
         venPrincipal.setTabOrder(self.txtnotas, self.txtfechaalta)
         venPrincipal.setTabOrder(self.txtmovil, self.txtciudad)
         venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
-        venPrincipal.setTabOrder(self.botoneliminar, self.checkhistorico)
-        
+        venPrincipal.setTabOrder(self.botoneliminar, self.tablaContactos)
         
     def retranslateUi(self, venPrincipal):
             _translate = QtCore.QCoreApplication.translate
@@ -340,10 +314,8 @@ class Ui_venprincipal(object):
             self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.pesContactos), _translate("venPrincipal", "CONTACTOS"))
             self.menuArchivo.setTitle(_translate("venPrincipal", "Archivo"))
             self.actionSalir.setText(_translate("venPrincipal", "Salir"))
-            self.menuGestion.setTitle(_translate("venPrincipal", "Gestión"))
-            self.menuHerramientas.setTitle(_translate("venPrincipal", "Herramientas"))
-            self.actionCrear_Backup.setText(_translate("venPrincipal", "Crear Backup"))
-            self.actionRestaurar_Backup.setText(_translate("venPrincipal", "Restaurar Backup"))
+            self.menuInformes.setTitle(_translate("venPrincipal", "Informes"))
+            self.actionListado_contactos.setText(_translate("venPrincipal", "Listado contactos"))
             self.menuAyuda.setTitle(_translate("venPrincipal", "Ayuda"))
             self.actionAcercaDe.setText(_translate("venPrincipal", "Acerca de"))
             self.botonalta.setText(_translate("venPrincipal", "ALTA"))
@@ -363,4 +335,3 @@ class Ui_venprincipal(object):
             item.setText(_translate("venPrincipal", "Notas"))
             item = self.tablaContactos.horizontalHeaderItem(6)
             item.setText(_translate("venPrincipal", "Fecha Alta"))
-            self.checkhistorico.setText(_translate("venprincipal", "Histórico"))
