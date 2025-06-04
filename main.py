@@ -47,6 +47,11 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resizeTablaContactos(self)
         
         var.ui.tablaContactos.clicked.connect(contactos.Contactos.cargaOneContacto)
+        
+        '''
+        eventos checkbox
+        '''
+        var.ui.checkhistorico.stateChanged.connect(contactos.Contactos.historicoContactos)
 
     def closeEvent(self, event):
         mbox = QtWidgets.QMessageBox()
