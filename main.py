@@ -8,7 +8,7 @@ import eventos
 import styles
 import locale
 import contactos
-
+import informes
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
@@ -28,6 +28,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.actionSalir.triggered.connect(eventos.Eventos.mensajeSalir)
         var.ui.actionAcercaDe.triggered.connect(eventos.Eventos.abrirAbout)
+        var.ui.actionListado_contactos.triggered.connect(informes.Informes.reportContactos)
 
         '''
         eventos de cajas de texto
@@ -47,11 +48,6 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resizeTablaContactos(self)
         
         var.ui.tablaContactos.clicked.connect(contactos.Contactos.cargaOneContacto)
-        
-        '''
-        eventos checkbox
-        '''
-        
 
     def closeEvent(self, event):
         mbox = QtWidgets.QMessageBox()
