@@ -30,18 +30,18 @@ class Informes:
             Informes.footInforme(titulo, paginas)
             items = ['ID', 'NOMBRE', 'EMAIL','MOVIL', 'CIUDAD']
             var.report.setFont('Helvetica-Bold', size=10)
-            var.report.drawString(55, 650, str(items[0]))
-            var.report.drawString(100, 650, str(items[1]))
-            var.report.drawString(190, 650, str(items[2]))
-            var.report.drawString(280, 650, str(items[3]))
-            var.report.drawString(370, 650, str(items[4]))
+            var.report.drawString(65, 650, str(items[0]))
+            var.report.drawString(114, 650, str(items[1]))
+            var.report.drawString(250, 650, str(items[2]))
+            var.report.drawString(370, 650, str(items[3]))
+            var.report.drawString(450, 650, str(items[4]))
             var.report.line(50, 645, 525, 645)
             query = QtSql.QSqlQuery()
             query.prepare("SELECT id, nombre, email, movil, ciudad FROM CONTACTOS ORDER BY NOMBRE ASC")
             if query.exec():
                 registros = query.value(0)
                 print (registros)
-                x = 55
+                x = 65
                 y = 625
                 while query.next():
                     if y <= 90:
@@ -52,20 +52,20 @@ class Informes:
                         Informes.topInforme(titulo)
                         items = ['ID', 'NOMBRE', 'EMAIL','MOVIL', 'CIUDAD']
                         var.report.setFont('Helvetica-Bold', size=10)
-                        var.report.drawString(55, 650, str(items[0]))
-                        var.report.drawString(100, 650, str(items[1]))
-                        var.report.drawString(190, 650, str(items[2]))
+                        var.report.drawString(95, 650, str(items[0]))
+                        var.report.drawString(114, 650, str(items[1]))
+                        var.report.drawString(220, 650, str(items[2]))
                         var.report.drawString(280, 650, str(items[3]))
-                        var.report.drawString(370, 650, str(items[4]))
+                        var.report.drawString(390, 650, str(items[4]))
                         var.report.line(50, 645, 525, 645)
                         x = 55
-                        y = 625
+                        y = 740
                     var.report.setFont('Helvetica', size=8)
                     var.report.drawString(x, y, str(query.value(0)))  # ID
-                    var.report.drawString(x + 50, y, str(query.value(1)))  # Nombre
-                    var.report.drawString(x + 140, y, str(query.value(2)))  # Email
-                    var.report.drawString(x + 220, y, str(query.value(3)))  # Móvil
-                    var.report.drawString(x + 315, y, str(query.value(4)))  # Ciudad
+                    var.report.drawString(x + 53, y, str(query.value(1)))  # Nombre
+                    var.report.drawString(x + 200, y, str(query.value(2)))  # Email
+                    var.report.drawString(x + 310, y, str(query.value(3)))  # Móvil
+                    var.report.drawString(x + 400, y, str(query.value(4)))  # Ciudad
                     y = y - 25
                 var.report.save()
                 for file in os.listdir(rootPath):
