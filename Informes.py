@@ -54,7 +54,7 @@ class Informes:
                         var.report.setFont('Helvetica-Bold', size=10)
                         var.report.drawString(95, 650, str(items[0]))
                         var.report.drawString(114, 650, str(items[1]))
-                        var.report.drawString(220, 650, str(items[2]))
+                        var.report.drawString(285, 650, str(items[2]))
                         var.report.drawString(280, 650, str(items[3]))
                         var.report.drawString(390, 650, str(items[4]))
                         var.report.line(50, 645, 525, 645)
@@ -63,9 +63,9 @@ class Informes:
                     var.report.setFont('Helvetica', size=8)
                     var.report.drawString(x, y, str(query.value(0)))  # ID
                     var.report.drawString(x + 53, y, str(query.value(1)))  # Nombre
-                    var.report.drawString(x + 200, y, str(query.value(2)))  # Email
+                    var.report.drawString(x + 185, y, str(query.value(2)))  # Email
                     var.report.drawString(x + 310, y, str(query.value(3)))  # Móvil
-                    var.report.drawString(x + 400, y, str(query.value(4)))  # Ciudad
+                    var.report.drawString(x + 390, y, str(query.value(4)))  # Ciudad
                     y = y - 25
                 var.report.save()
                 for file in os.listdir(rootPath):
@@ -92,7 +92,7 @@ class Informes:
                 var.report.drawImage(ruta_logo, 480, 745, width=35, height=35)
                 var.report.setFont('Helvetica', size=8)
                 var.report.drawString(55, 770, 'CIF: A12345678')
-                var.report.drawString(55, 755, 'Andrea López')
+                var.report.drawString(55, 755, 'agenda telefónica S.L.')
                 var.report.drawString(55, 740, 'Avda. Galicia - 101')
                 var.report.drawString(55, 725, 'Teléfono: 986 132 456')
                 var.report.drawString(55, 710, 'e-mail: agendatelf@mail.com')
