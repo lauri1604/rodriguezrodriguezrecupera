@@ -88,3 +88,15 @@ class Eventos(QtWidgets.QMainWindow):
                 header_items.setFont(font)
         except Exception as e:
             print("error en resize tabla contactos: ", e)
+            
+    def limpiarPanel(self):
+        try:
+            camposcontacto = [var.ui.txtnombre, var.ui.txtapellidos, var.ui.txtemail, var.ui.txtmovil, var.ui.txttelefono, var.ui.txtdireccion, var.ui.txtciudad, var.ui.txtprovincia, var.ui.txtpais, var.ui.txtnotas]
+            for i, dato in enumerate (camposcontacto):
+                if i == 4 or i == 5:
+                    pass
+                else:
+                    dato.setText("")
+                    contactos.Contactos.cargaTablaContactos(self)
+        except Exception as e:
+            print("Error al limpiar panel:", e)

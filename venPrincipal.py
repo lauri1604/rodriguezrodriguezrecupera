@@ -299,6 +299,9 @@ class Ui_venprincipal(object):
         self.menubar.addAction(self.menuInformes.menuAction())
         self.menubar.addAction(self.menuAyuda.menuAction())
         
+        # Añadir acciones al toolbar
+        self
+        
         self.retranslateUi(venPrincipal)
         self.panPrincipal.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(venPrincipal)
