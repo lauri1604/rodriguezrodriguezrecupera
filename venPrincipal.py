@@ -198,6 +198,18 @@ class Ui_venprincipal(object):
         self.txtciudad.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.txtciudad.setStyleSheet("background-color: rgb(255, 255, 239);")
         
+        #Bótón histórico
+        self.checkhistorico = QtWidgets.QCheckBox(parent=self.pesContactos)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkhistorico.sizePolicy().hasHeightForWidth())
+        self.checkhistorico.setSizePolicy(sizePolicy)
+        self.checkhistorico.setMinimumSize(QtCore.QSize(110, 0))
+        self.checkhistorico.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.checkhistorico.setObjectName("chkhistorico")
+        self.checkhistorico.setText("Histórico")
+        
         # Añadir widgets al gridLayout
         self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
         
@@ -223,6 +235,9 @@ class Ui_venprincipal(object):
         self.gridLayout_2.addWidget(self.lblfechaalta, 4, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
         self.gridLayout_2.addWidget(self.txtfechaalta, 4, 5, 1, 1)
 
+        # Checkbox histórico
+        self.gridLayout_2.addWidget(self.checkhistorico, 5, 1, 1, 1)
+    
         # Botones y tabla
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 5)  # Botones
         self.gridLayout_2.addWidget(self.tablaContactos, 6, 1, 1, 5)      # Tabla
@@ -321,6 +336,7 @@ class Ui_venprincipal(object):
             self.actionListado_contactos.setText(_translate("venPrincipal", "Listado contactos"))
             self.menuAyuda.setTitle(_translate("venPrincipal", "Ayuda"))
             self.actionAcercaDe.setText(_translate("venPrincipal", "Acerca de"))
+            self.checkhistorico.setText(_translate("venPrincipal", "Histórico"))
             self.botonalta.setText(_translate("venPrincipal", "ALTA"))
             self.botonmodificar.setText(_translate("venPrincipal", "MODIFICAR"))
             self.botoneliminar.setText(_translate("venPrincipal", "ELIMINAR"))

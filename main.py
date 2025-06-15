@@ -29,7 +29,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionSalir.triggered.connect(eventos.Eventos.mensajeSalir)
         var.ui.actionAcercaDe.triggered.connect(eventos.Eventos.abrirAbout)
         var.ui.actionListado_contactos.triggered.connect(informes.Informes.reportContactos)
-        var.ui.actionLimpiar.triggered.connect(eventos.Eventos.limpiarCamposContactos)
+        #var.ui.actionLimpiar.triggered.connect(eventos.Eventos.limpiarCamposContactos)
 
         '''
         eventos de cajas de texto
