@@ -38,6 +38,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtmovil.textChanged.connect(lambda: contactos.Contactos.checkMovil(var.ui.txtmovil.text()))
         
         '''
+        eventos checkbox
+        '''
+        var.ui.checkhistorico.stateChanged.connect(contactos.Contactos.historicoContacto)
+        
+        '''
         eventos de botones
         '''
         var.ui.botonalta.clicked.connect(contactos.Contactos.altaContacto)
