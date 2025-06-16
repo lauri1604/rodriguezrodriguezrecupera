@@ -519,6 +519,23 @@
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>
@@ -537,6 +554,21 @@
   <action name="actionExportar_Datos">
    <property name="text">
     <string>Exportar Datos</string>
+   </property>
+  </action>
+  <action name="action_limpiar">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/limpiar.ico</normaloff>../img/limpiar.ico</iconset>
+   </property>
+   <property name="text">
+    <string>boton limpiar</string>
+   </property>
+   <property name="toolTip">
+    <string>Limpiar</string>
    </property>
   </action>
  </widget>

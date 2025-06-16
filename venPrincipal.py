@@ -315,7 +315,12 @@ class Ui_venprincipal(object):
         self.menubar.addAction(self.menuAyuda.menuAction())
         
         # Añadir acciones al toolbar
-        self
+        self.action_limpiar = QtGui.QAction(parent=venPrincipal)
+        iconolimpiar = QtGui.QIcon()
+        iconolimpiar.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/limpiar.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.action_limpiar.setIcon(iconolimpiar)
+        self.action_limpiar.setObjectName("action_limpiar")
+        self.toolbar.addAction(self.action_limpiar)
         
         self.retranslateUi(venPrincipal)
         self.panPrincipal.setCurrentIndex(4)
