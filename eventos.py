@@ -91,13 +91,13 @@ class Eventos(QtWidgets.QMainWindow):
             
     def limpiarPanel(self):
         try:
-            camposcontacto = [var.ui.txtnombre, var.ui.txtapellidos, var.ui.txtemail, var.ui.txtmovil, var.ui.txttelefono, var.ui.txtdireccion, var.ui.txtciudad, var.ui.txtprovincia, var.ui.txtpais, var.ui.txtnotas]
+            camposcontacto = [var.ui.txtid, var.ui.txtnombre, var.ui.txtemail, var.ui.txtmovil, var.ui.txtciudad, var.ui.txtnotas, var.ui.txtfechaalta]
             for i, dato in enumerate (camposcontacto):
-                if i == 4 or i == 5:
-                    pass
+                if i == 4:
+                    dato.clear()
                 else:
                     dato.setText("")
-                    contactos.Contactos.cargaTablaContactos(self)
+                contactos.Contactos.cargaTablaContactos(self)
         except Exception as e:
             print("Error al limpiar panel:", e)
             
