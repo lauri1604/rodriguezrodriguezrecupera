@@ -210,6 +210,19 @@ class Ui_venprincipal(object):
         self.checkhistorico.setObjectName("chkhistorico")
         self.checkhistorico.setText("Histórico")
         
+        #botón calendario
+        self.botoncalendar = QtWidgets.QPushButton(parent=self.pesContactos)
+        self.botoncalendar.setMinimumSize(QtCore.QSize(30, 30))
+        self.botoncalendar.setMaximumSize(QtCore.QSize(30, 30))
+        self.botoncalendar.setStyleSheet("background-color: rgb(245, 245, 245);")
+        self.botoncalendar.setText("")
+        iconcalendar = QtGui.QIcon()
+        iconcalendar.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/calendar.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.botoncalendar.setIcon(iconcalendar)
+        self.botoncalendar.setIconSize(QtCore.QSize(30, 30))
+        self.botoncalendar.setFlat(True)
+        self.botoncalendar.setObjectName("botoncalendar")
+        
         # Añadir widgets al gridLayout
         self.gridLayout_2.addItem(self.verticalSpacer_1, 0, 0, 1, 7)  # Spacer superior
         
@@ -234,6 +247,9 @@ class Ui_venprincipal(object):
         self.gridLayout_2.addWidget(self.txtmovil, 4, 2, 1, 1)
         self.gridLayout_2.addWidget(self.lblfechaalta, 4, 4, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
         self.gridLayout_2.addWidget(self.txtfechaalta, 4, 5, 1, 1)
+        
+        # Botón calendario
+        self.gridLayout_2.addWidget(self.botoncalendar, 5, 5, 1, 1)
 
         # Checkbox histórico
         self.gridLayout_2.addWidget(self.checkhistorico, 5, 1, 1, 1)
@@ -317,7 +333,7 @@ class Ui_venprincipal(object):
         # Añadir acciones al toolbar
         self.action_limpiar = QtGui.QAction(parent=venPrincipal)
         iconolimpiar = QtGui.QIcon()
-        iconolimpiar.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/limpiar.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        iconolimpiar.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/limpiar.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.action_limpiar.setIcon(iconolimpiar)
         self.action_limpiar.setObjectName("action_limpiar")
         self.toolbar.addAction(self.action_limpiar)
@@ -330,6 +346,7 @@ class Ui_venprincipal(object):
         venPrincipal.setTabOrder(self.txtmovil, self.txtciudad)
         venPrincipal.setTabOrder(self.botonalta, self.botonmodificar)
         venPrincipal.setTabOrder(self.botoneliminar, self.tablaContactos)
+        venPrincipal.setTabOrder(self.checkhistorico, self.botoncalendar)
         
     def retranslateUi(self, venPrincipal):
             _translate = QtCore.QCoreApplication.translate

@@ -19,6 +19,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_conexion(self)
         var.dlgAbrir = FileDialogAbrir()
         var.dlgAbout = dlgAbout()
+        var.uicalendar = Calendar()
         var.longcontacto = 0
         var.historico = 1
         contactos.Contactos.cargaTablaContactos(self)
@@ -48,6 +49,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.botonalta.clicked.connect(contactos.Contactos.altaContacto)
         var.ui.botonmodificar.clicked.connect(contactos.Contactos.modificarContacto)
         var.ui.botoneliminar.clicked.connect(contactos.Contactos.eliminarContacto)
+        var.ui.botoncalendar.clicked.connect(lambda: eventos.Eventos.abrirCalendar(0))
+        
         '''
         eventos de tablas
         '''

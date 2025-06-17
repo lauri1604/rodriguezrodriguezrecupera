@@ -100,3 +100,10 @@ class Eventos(QtWidgets.QMainWindow):
                     contactos.Contactos.cargaTablaContactos(self)
         except Exception as e:
             print("Error al limpiar panel:", e)
+            
+    def abrirCalendar(boton):
+        try:
+            var.boton = boton
+            var.uicalendar.show()
+        except Exception as e:
+            print("Error al abrir calendario:", e)
