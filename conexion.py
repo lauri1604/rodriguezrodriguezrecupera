@@ -1,10 +1,9 @@
 from PyQt6 import QtSql, QtWidgets, QtCore
-from idlelib.query import Query
 from datetime import datetime
 import os
 import var
 import sqlite3
-import var
+
 class Conexion:
     @staticmethod
     def db_conexion(self = None):
